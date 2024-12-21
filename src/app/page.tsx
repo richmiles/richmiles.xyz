@@ -1,100 +1,216 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { Terminal, Code2, Brain, Activity, ChevronRight, Github, Linkedin } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import TypewriterText from "@/components/ui/typewriter-text";
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gray-900 text-cyan-400 font-mono">
+      {/* Navigation */}
+      <nav className="border-b border-cyan-500/30 sticky top-0 z-50 backdrop-blur-sm bg-gray-900/90">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            <div className="flex items-center">
+              <span className="text-xl font-bold text-cyan-400">
+                <TypewriterText text="rich@miles:~$" />
+              </span>
+            </div>
+            <div className="flex items-center space-x-6">
+              {['about', 'projects', 'blog', 'contact'].map((item) => (
+                <a 
+                  key={item}
+                  href="#" 
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 hover:underline decoration-cyan-500/50"
+                >
+                  /{item}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="relative bg-gray-900 border-b border-cyan-500/30">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
+          <div className="space-y-6">
+            <div className="inline-block">
+              <TypewriterText text=">> Initializing system..." speed={100} />
+            </div>
+            <h1 className="text-6xl font-bold tracking-tight text-white mb-6">
+              <span className="text-cyan-400">&gt; </span>
+              Building Intelligent
+              <br />
+              <span className="text-cyan-300">Software Solutions_</span>
+            </h1>
+            <p className="text-xl text-cyan-300/80 mb-8 max-w-3xl font-mono">
+              Crafting secure, intelligent systems at the intersection of code, AI, and human performance.
+            </p>
+            <div className="flex space-x-4">
+              <Button size="lg" className="bg-cyan-500 text-gray-900 hover:bg-cyan-400 font-mono">
+                View Projects <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline" size="lg" className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 font-mono">
+                Read Blog
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Expertise Grid */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <h2 className="text-3xl font-bold text-cyan-400 mb-12">
+          <span className="text-cyan-400">&gt; </span>
+          System Capabilities
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            {
+              icon: Terminal,
+              title: "Software Development",
+              desc: "C#/.NET, iOS, React, TypeScript",
+              content: "Building robust applications from biotech instruments to mobile apps."
+            },
+            {
+              icon: Brain,
+              title: "AI Integration",
+              desc: "LLMs, ChatGPT, Claude",
+              content: "Leveraging AI for enhanced user experiences and development efficiency."
+            },
+            {
+              icon: Code2,
+              title: "Technical Architecture",
+              desc: "Cloud, APIs, Security",
+              content: "Designing scalable solutions using modern cloud platforms and tools."
+            },
+            {
+              icon: Activity,
+              title: "Performance Optimization",
+              desc: "Data Analysis, HRV, Metrics",
+              content: "Applying data-driven insights to improve human and system performance."
+            }
+          ].map((item, index) => (
+            <Card 
+              key={index} 
+              className="group hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-1 bg-gray-800 border-cyan-500/30"
+            >
+              <CardHeader>
+                <item.icon className="h-8 w-8 mb-4 text-cyan-400" />
+                <CardTitle className="text-cyan-300">{item.title}</CardTitle>
+                <CardDescription className="text-cyan-300/70">{item.desc}</CardDescription>
+              </CardHeader>
+              <CardContent className="text-cyan-300/60">
+                {item.content}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* Blog Preview */}
+      <div className="border-t border-cyan-500/30">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold text-cyan-400">
+              <span className="text-cyan-400">&gt; </span>
+              Latest Logs
+            </h2>
+            <Button variant="outline" className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10">
+              Access Archive
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "iOS Development from a .NET Background",
+                week: "Week 2",
+                category: "Dev Log",
+                content: "Exploring the transition from .NET to iOS development, with insights on leveraging LLMs for learning and productivity."
+              },
+              {
+                title: "Implementing Shamir Secret Sharing",
+                week: "Week 3",
+                category: "Security",
+                content: "A detailed look at implementing Shamir Secret Sharing with the help of LLMs for explanation and verification."
+              },
+              {
+                title: "Auth0 Integration in iOS Apps",
+                week: "Week 4",
+                category: "Implementation",
+                content: "Step-by-step guide to implementing Auth0 in iOS apps, featuring LLM-powered help systems."
+              }
+            ].map((post, index) => (
+              <Card 
+                key={index} 
+                className="group hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-1 bg-gray-800 border-cyan-500/30 cursor-pointer"
+              >
+                <CardHeader>
+                  <div className="flex items-center space-x-2 text-sm text-cyan-300/70 mb-2">
+                    <span className="bg-cyan-500/10 text-cyan-300 px-2 py-1 rounded">
+                      {post.week}
+                    </span>
+                    <span>•</span>
+                    <span>{post.category}</span>
+                  </div>
+                  <CardTitle className="text-cyan-300 group-hover:text-cyan-200 transition-colors duration-200">
+                    {post.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-cyan-300/60">
+                  {post.content}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="border-t border-cyan-500/30">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="col-span-2">
+              <h3 className="text-xl font-bold mb-4 text-cyan-400">
+                <TypewriterText text="// Connect with the system" />
+              </h3>
+              <p className="text-cyan-300/70 mb-4">
+                Building intelligent software solutions at the intersection of code, innovation, and human performance.
+              </p>
+              <div className="flex space-x-4">
+                <Github className="h-6 w-6 text-cyan-400 hover:text-cyan-300 cursor-pointer transition-colors duration-200" />
+                <Linkedin className="h-6 w-6 text-cyan-400 hover:text-cyan-300 cursor-pointer transition-colors duration-200" />
+              </div>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4 text-cyan-300">Navigation</h4>
+              <ul className="space-y-2">
+                {['About', 'Projects', 'Blog', 'Contact'].map((link) => (
+                  <li key={link}>
+                    <a href="#" className="text-cyan-300/70 hover:text-cyan-300 transition-colors duration-200">
+                      /{link.toLowerCase()}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4 text-cyan-300">Contact</h4>
+              <p className="text-cyan-300/70">Initialize new connection...</p>
+              <Button className="mt-4 bg-cyan-500 text-gray-900 hover:bg-cyan-400">
+                Open Terminal
+              </Button>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-cyan-500/30 text-center text-cyan-300/50">
+            <TypewriterText text="[System Status: Online] - Last updated: 2024" />
+          </div>
+        </div>
       </footer>
     </div>
   );
