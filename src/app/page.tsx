@@ -21,7 +21,7 @@ export default function HomePage() {
               {['about', 'projects', 'blog', 'contact'].map((item) => (
                 <a 
                   key={item}
-                  href="#" 
+                  href={`/${item}`} 
                   className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 hover:underline decoration-cyan-500/50"
                 >
                   /{item}
