@@ -7,9 +7,9 @@ import TypewriterText from "@/components/ui/typewriter-text";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-900 text-cyan-400 font-mono">
+    <div className="min-h-screen bg-gray-900 text-gray-200 font-mono">
       {/* Navigation */}
-      <nav className="border-b border-cyan-500/30 sticky top-0 z-50 backdrop-blur-sm bg-gray-900/90">
+      <nav className="border-b border-gray-700 sticky top-0 z-50 backdrop-blur-sm bg-gray-900/90">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -22,7 +22,7 @@ export default function HomePage() {
                 <a 
                   key={item}
                   href={`/${item}`} 
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 hover:underline decoration-cyan-500/50"
+                  className="text-gray-300 hover:text-cyan-300 transition-colors duration-200 hover:underline decoration-cyan-500/50"
                 >
                   /{item}
                 </a>
@@ -33,7 +33,7 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative bg-gray-900 border-b border-cyan-500/30">
+      <div className="relative bg-gray-900 border-b border-gray-700">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
         </div>
@@ -48,14 +48,14 @@ export default function HomePage() {
               <br />
               <span className="text-cyan-300">Software Solutions_</span>
             </h1>
-            <p className="text-xl text-cyan-300/80 mb-8 max-w-3xl font-mono">
+            <p className="text-xl text-gray-300/80 mb-8 max-w-3xl">
               Crafting secure, intelligent systems at the intersection of code, AI, and human performance.
             </p>
             <div className="flex space-x-4">
-              <Button size="lg" className="bg-cyan-500 text-gray-900 hover:bg-cyan-400 font-mono">
+              <Button size="lg" className="bg-cyan-500 text-gray-900 hover:bg-cyan-400">
                 View Projects <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" size="lg" className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 font-mono">
+              <Button variant="outline" size="lg" className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10">
                 Read Blog
               </Button>
             </div>
@@ -98,14 +98,14 @@ export default function HomePage() {
           ].map((item, index) => (
             <Card 
               key={index} 
-              className="group hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-1 bg-gray-800 border-cyan-500/30"
+              className="group hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-1 bg-gray-800 border-gray-700"
             >
               <CardHeader>
                 <item.icon className="h-8 w-8 mb-4 text-cyan-400" />
-                <CardTitle className="text-cyan-300">{item.title}</CardTitle>
-                <CardDescription className="text-cyan-300/70">{item.desc}</CardDescription>
+                <CardTitle className="text-gray-200">{item.title}</CardTitle>
+                <CardDescription className="text-gray-400">{item.desc}</CardDescription>
               </CardHeader>
-              <CardContent className="text-cyan-300/60">
+              <CardContent className="text-gray-400">
                 {item.content}
               </CardContent>
             </Card>
@@ -114,7 +114,7 @@ export default function HomePage() {
       </div>
 
       {/* Blog Preview */}
-      <div className="border-t border-cyan-500/30">
+      <div className="border-t border-gray-700">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-3xl font-bold text-cyan-400">
@@ -148,21 +148,21 @@ export default function HomePage() {
             ].map((post, index) => (
               <Card 
                 key={index} 
-                className="group hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-1 bg-gray-800 border-cyan-500/30 cursor-pointer"
+                className="group hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-1 bg-gray-800 border-gray-700 cursor-pointer"
               >
                 <CardHeader>
-                  <div className="flex items-center space-x-2 text-sm text-cyan-300/70 mb-2">
-                    <span className="bg-cyan-500/10 text-cyan-300 px-2 py-1 rounded">
+                  <div className="flex items-center space-x-2 text-sm text-gray-400 mb-2">
+                    <span className="bg-gray-700 text-cyan-300 px-2 py-1 rounded">
                       {post.week}
                     </span>
                     <span>•</span>
                     <span>{post.category}</span>
                   </div>
-                  <CardTitle className="text-cyan-300 group-hover:text-cyan-200 transition-colors duration-200">
+                  <CardTitle className="text-gray-200 group-hover:text-cyan-200 transition-colors duration-200">
                     {post.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-cyan-300/60">
+                <CardContent className="text-gray-400">
                   {post.content}
                 </CardContent>
               </Card>
@@ -172,27 +172,27 @@ export default function HomePage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-cyan-500/30">
+      <footer className="border-t border-gray-700">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-2">
               <h3 className="text-xl font-bold mb-4 text-cyan-400">
                 <TypewriterText text="// Connect with the system" />
               </h3>
-              <p className="text-cyan-300/70 mb-4">
+              <p className="text-gray-400 mb-4">
                 Building intelligent software solutions at the intersection of code, innovation, and human performance.
               </p>
               <div className="flex space-x-4">
-                <Github className="h-6 w-6 text-cyan-400 hover:text-cyan-300 cursor-pointer transition-colors duration-200" />
-                <Linkedin className="h-6 w-6 text-cyan-400 hover:text-cyan-300 cursor-pointer transition-colors duration-200" />
+                <Github className="h-6 w-6 text-gray-400 hover:text-cyan-300 cursor-pointer transition-colors duration-200" />
+                <Linkedin className="h-6 w-6 text-gray-400 hover:text-cyan-300 cursor-pointer transition-colors duration-200" />
               </div>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-cyan-300">Navigation</h4>
+              <h4 className="text-lg font-semibold mb-4 text-gray-200">Navigation</h4>
               <ul className="space-y-2">
                 {['About', 'Projects', 'Blog', 'Contact'].map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-cyan-300/70 hover:text-cyan-300 transition-colors duration-200">
+                    <a href="#" className="text-gray-400 hover:text-cyan-300 transition-colors duration-200">
                       /{link.toLowerCase()}
                     </a>
                   </li>
@@ -200,14 +200,14 @@ export default function HomePage() {
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-cyan-300">Contact</h4>
-              <p className="text-cyan-300/70">Initialize new connection...</p>
+              <h4 className="text-lg font-semibold mb-4 text-gray-200">Contact</h4>
+              <p className="text-gray-400">Initialize new connection...</p>
               <Button className="mt-4 bg-cyan-500 text-gray-900 hover:bg-cyan-400">
                 Open Terminal
               </Button>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-cyan-500/30 text-center text-cyan-300/50">
+          <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
             <TypewriterText text="[System Status: Online] - Last updated: 2024" />
           </div>
         </div>
