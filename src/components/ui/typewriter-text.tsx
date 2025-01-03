@@ -3,27 +3,41 @@
 import React, { useEffect, useState } from 'react';
 
 interface TypewriterTextProps {
-  text: string;
+  texts: string[]; // Accept an array of strings
   speed?: number;
+  delayBetweenTexts?: number; // Delay before moving to the next text
 }
 
-const TypewriterText: React.FC<TypewriterTextProps> = ({ text, speed = 50 }) => {
+const TypewriterText: React.FC<TypewriterTextProps> = ({ texts, speed = 50, delayBetweenTexts = 1000 }) => {
   const [displayText, setDisplayText] = useState('');
-  
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
   useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        setDisplayText(text.substring(0, i + 1));
-        i++;
-      } else {
-        clearInterval(timer);
-      }
-    }, speed);
+    let timer: NodeJS.Timeout;
     
+    const typeText = () => {
+      let i = 0;
+      setDisplayText('');
+      
+      timer = setInterval(() => {
+        if (i < texts[currentTextIndex].length) {
+          setDisplayText(prev => texts[currentTextIndex].substring(0, i + 1));
+          i++;
+        } else {
+          clearInterval(timer);
+          if (currentTextIndex + 1 < texts.length) {
+            setTimeout(() => {
+              setCurrentTextIndex(prev => prev + 1);
+            }, delayBetweenTexts);
+          }
+        }
+      }, speed);
+    };
+
+    typeText();
     return () => clearInterval(timer);
-  }, [text, speed]);
-  
+  }, [currentTextIndex, texts, speed, delayBetweenTexts]);
+
   return <span className="font-mono">{displayText}</span>;
 };
 

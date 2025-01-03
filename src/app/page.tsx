@@ -14,7 +14,20 @@ export default function HomePage() {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <span className="text-xl font-bold text-cyan-400">
-                <TypewriterText text="rich@miles:~$" />
+              <div className="inline-block">
+                <TypewriterText 
+                  texts={[
+                    "Initializing system...",
+                    "Loading modules...",
+                    "System ready."
+                  ]} 
+                  speed={100} 
+                  delayBetweenTexts={1500} 
+                />
+              </div>
+              <div className="text-xl font-bold text-cyan-400 mt-4">
+                rich@miles:~$ <span className="animate-blink">|</span>
+              </div>
               </span>
             </div>
             <div className="flex items-center space-x-6">
@@ -39,9 +52,6 @@ export default function HomePage() {
         </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
           <div className="space-y-6">
-            <div className="inline-block">
-              <TypewriterText text=">> Initializing system..." speed={100} />
-            </div>
             <h1 className="text-6xl font-bold tracking-tight text-white mb-6">
               <span className="text-cyan-400">&gt; </span>
               Building Intelligent
@@ -177,7 +187,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-2">
               <h3 className="text-xl font-bold mb-4 text-cyan-400">
-                <TypewriterText text="// Connect with the system" />
+                <TypewriterText texts={["[// Connect with the system]"]} speed={100} delayBetweenTexts={1500} />
               </h3>
               <p className="text-gray-400 mb-4">
                 Building intelligent software solutions at the intersection of code, innovation, and human performance.
@@ -208,7 +218,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
-            <TypewriterText text="[System Status: Online] - Last updated: 2024" />
+            <TypewriterText texts={["[System Status: Online] - Last updated: 2024"]} speed={100} delayBetweenTexts={1500} />
           </div>
         </div>
       </footer>
