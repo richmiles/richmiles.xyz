@@ -1,0 +1,13 @@
+{
+    "title": "FastAPI",
+    "icon": "devicon-fastapi-plain colored",
+    "experience": 92,
+    "overview": "FastAPI is my framework of choice for building high-performance Python APIs, offering automatic documentation, data validation, and asynchronous support.",
+    "usage": "I use FastAPI for building RESTful APIs and microservices, particularly when performance and developer experience are priorities. The automatic OpenAPI documentation and data validation significantly speed up development.",
+    "projects": [
+        "LLM Platform API",
+        "Edventure Trek Backend",
+        "Data Processing Service"
+    ],
+    "insight": "<p>When building the backend for my LLM platform, choosing FastAPI was critical for several reasons:</p><ul><li>Asynchronous support was essential for handling multiple concurrent LLM requests without blocking</li><li>Type validation with Pydantic reduced bugs and improved API reliability</li><li>The automatic Swagger documentation made testing and integration much simpler</li></ul><div class=\"code-example\">from fastapi import FastAPI, Depends, HTTPException\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass LLMRequest(BaseModel):\n    prompt: str\n    max_tokens: int = 100\n    model: str = \"gpt-4\"\n\n@app.post(\"/generate\")\nasync def generate_response(request: LLMRequest):\n    if request.model == \"gpt-4\":\n        return await openai_service.generate(request)\n    elif request.model == \"claude\":\n        return await anthropic_service.generate(request)\n    else:\n        raise HTTPException(status_code=400, detail=\"Unsupported model\")</div><p>This approach allowed me to create a unified API interface while handling the complexity of different LLM providers behind the scenes.</p>"
+}

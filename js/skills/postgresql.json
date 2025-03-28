@@ -1,0 +1,13 @@
+{
+    "title": "PostgreSQL",
+    "icon": "devicon-postgresql-plain colored",
+    "experience": 88,
+    "overview": "PostgreSQL is my preferred relational database for its robustness, extensibility, and excellent support for JSON and other semi-structured data.",
+    "usage": "I use PostgreSQL for applications requiring complex querying, transactional integrity, and advanced data types. Its excellent support for JSON makes it particularly useful for applications that need both relational and document-oriented storage.",
+    "projects": [
+        "LLM Platform",
+        "Neowire",
+        "Customer Data Platform"
+    ],
+    "insight": "<p>In my database design work, I've found that PostgreSQL offers the perfect balance of traditional relational features and modern capabilities:</p><div class=\"code-example\">-- Example of combining relational and JSON capabilities in PostgreSQL\nCREATE TABLE user_interactions (\n    id SERIAL PRIMARY KEY,\n    user_id INTEGER REFERENCES users(id),\n    interaction_time TIMESTAMP WITH TIME ZONE,\n    interaction_type VARCHAR(50),\n    context JSONB,\n    vector_embedding VECTOR(1536)  -- Using pgvector extension\n);\n\n-- Query that combines relational and vector search\nSELECT * FROM user_interactions\nWHERE interaction_type = 'query'\nAND context->>'topic' = 'technical support'\nORDER BY vector_embedding <-> $embedding_vector\nLIMIT 10;</div><p>This approach lets me combine structured data with the flexibility needed for AI applications. By leveraging PostgreSQL extensions like pgvector, I can perform semantic searches directly in the database rather than requiring a separate vector database.</p>"
+}

@@ -1,0 +1,13 @@
+{
+    "title": "Python",
+    "icon": "devicon-python-plain colored",
+    "experience": 95,
+    "overview": "Python has been my primary language for backend development and data processing for 8+ years. I use it extensively for API development, AI/ML integration, and automation tools.",
+    "usage": "I primarily use Python with FastAPI to build high-performance backend services. For my LLM platform, Python's rich ecosystem of libraries (like Langchain, NLTK, and TensorFlow) allows me to rapidly prototype and deploy AI-powered features.",
+    "projects": [
+        "LLM Platform",
+        "Edventure Trek",
+        "Data Processing Pipelines"
+    ],
+    "insight": "<p>Python excels for rapid development and AI integrations, while TypeScript provides strong typing for frontend work, and C# offers excellent performance for game development.</p>\n<p>In most of my recent projects, I choose Python for data-heavy applications that need AI integration. For example, in my LLM platform, Python allowed me to:</p>\n<ul>\n    <li>Integrate multiple models through their SDKs with minimal boilerplate</li>\n    <li>Process and transform data efficiently using specialized libraries</li>\n    <li>Deploy quickly with containerization</li>\n</ul>\n<p>A key decision point is whether I need static typing (I'd choose TypeScript) or performance-critical operations that benefit from compiled code (C#).</p>"
+}

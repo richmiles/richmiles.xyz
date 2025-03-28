@@ -1,0 +1,13 @@
+{
+    "title": "TypeScript",
+    "icon": "devicon-typescript-plain colored",
+    "experience": 85,
+    "overview": "TypeScript is my go-to language for frontend development, providing static typing on top of JavaScript that improves code quality and developer experience.",
+    "usage": "I use TypeScript with React for building robust, type-safe user interfaces. The static typing helps catch errors during development rather than runtime, leading to more maintainable codebases.",
+    "projects": [
+        "LLM Platform Frontend",
+        "Neowire Dashboard",
+        "Interactive Data Visualizations"
+    ],
+    "insight": "<p>When choosing between Python, TypeScript, and C#, I consider these key factors:</p>\n                 <ol>\n                     <li><strong>Project Domain:</strong> Web frontend (TypeScript), backend API (Python or C#), or game development (C#)</li>\n                     <li><strong>Team Expertise:</strong> Matching technology to existing team skills</li>\n                     <li><strong>Integration Requirements:</strong> Ecosystem compatibility with other tools</li>\n                 </ol>\n                 <p>For example, at Neowire I chose TypeScript for our customer dashboard because:</p>\n                 <div class=\"code-example\">\n                 // TypeScript allowed us to create strongly-typed interfaces for our API responses\n                 interface UserAnalytics {\n                   userId: string;\n                   sessionCount: number;\n                   averageDuration: number;\n                   topFeatures: string[];\n                 }\n                 </div>\n                 <p>This approach ensured data consistency across the application and made refactoring much safer.</p>"
+}

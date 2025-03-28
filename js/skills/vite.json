@@ -1,0 +1,10 @@
+{
+    "title": "Vite",
+    "icon": "devicon-vitejs-plain colored",
+    "experience": 80,
+    "overview": "Vite is my preferred build tool for modern web development, offering lightning-fast development server and optimized production builds.",
+    "usage": "I use Vite to accelerate development workflows, taking advantage of its native ES modules support, hot module replacement, and efficient build process.",
+    "projects": ["LLM Platform Frontend", "Interactive Data Visualization Tool", "Client Portal"],
+    "insight": "<p>Switching from webpack to Vite dramatically improved my development experience and build times:</p><ul><li>Development server startup reduced from ~30 seconds to under 1 second</li><li>Hot module replacement that actually works reliably</li><li>Build times reduced by 60-70% for production deployments</li></ul><p>For the LLM Platform frontend, I configured a custom Vite setup to handle our specific needs:</p><div class=\"code-example\">// vite.config.js\nimport { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\nimport path from 'path'\n\nexport default defineConfig({\n  plugins: [react()],\n  resolve: {\n    alias: {\n      '@': path.resolve(__dirname, './src'),\n      '@components': path.resolve(__dirname, './src/components'),\n      '@hooks': path.resolve(__dirname, './src/hooks'),\n      '@services': path.resolve(__dirname, './src/services'),\n    },\n  },\n  build: {\n    rollupOptions: {\n      output: {\n        manualChunks: {\n          'react-vendor': ['react', 'react-dom'],\n          'llm-models': [\n            './src/services/openai.ts', \n            './src/services/anthropic.ts', \n            './src/services/gemini.ts'\n          ],\n          'ui-components': [\n            './src/components/ui/**/*'\n          ]\n        }\n      }\n    }\n  },\n  optimizeDeps: {\n    include: ['react', 'react-dom', 'chart.js']\n  }\n})</div><p>This configuration optimized our bundle sizes, ensuring that users only download the code they need for their current view, significantly improving initial load times.</p>"
+  }
+  
