@@ -42,7 +42,6 @@ function initSkillsModalEvents() {
     // Set up click handlers for skill items
     const skillItems = document.querySelectorAll('.skill-icon-item');
     const modal = document.getElementById('skills-modal');
-    const modalClose = document.querySelector('.modal-close');
     
     // Add click listeners to each skill item
     skillItems.forEach(item => {
@@ -52,10 +51,13 @@ function initSkillsModalEvents() {
         });
     });
     
-    // Set up close button
-    if (modalClose) {
-        modalClose.addEventListener('click', closeSkillModal);
-    }
+    // Set up close button - THIS NEEDS TO BE PROPERLY ATTACHED AFTER MODAL CONTENT IS LOADED
+    document.addEventListener('click', function(event) {
+        // Check if the clicked element is the close button or has the close button class
+        if (event.target.classList.contains('modal-close')) {
+            closeSkillModal();
+        }
+    });
     
     // Close modal when clicking outside
     window.addEventListener('click', function(event) {
