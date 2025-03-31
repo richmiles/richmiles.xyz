@@ -2,7 +2,7 @@
   "title": "Python",
   "icon": "devicon-python-plain colored",
   "overview": "While Python isn't my go-to language, it has become a valuable tool in my toolkit, especially due to its prominence in AI and data-related tasks. Initially adopted as an alternative to Matlab for data analysis, my recent work with Python has focused on backend development using FastAPI and integration with AI services like OpenAI.",
-  "experience": 7,
+  "experience": 70,
   "usage": "I primarily use Python for backend development with FastAPI, integrating AI services via REST APIs, scripting, and occasional data analysis tasks. Its ease of use makes it ideal for quickly developing scripts or prototypes involving data processing.",
   "projects":
   [

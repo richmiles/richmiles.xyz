@@ -290,6 +290,9 @@
         /**
  * Enhanced function to load the skills section with category intros
  */
+        /**
+        * Enhanced function to load the skills section with mastery indicators
+        */
         function loadSkillsSection() {
             const skillsContainer = document.getElementById('skills-content-container');
 
@@ -297,6 +300,9 @@
             if (skillsContainer.querySelector('.loading-indicator')) {
                 // Load skill styles
                 loadCSS('css/skills.css');
+
+                // Load mastery indicator styles
+                loadCSS('css/skill-mastery.css');
 
                 // Also load the category intro styles
                 loadCSS('css/categories.css');
@@ -328,6 +334,17 @@
 
                                 // Start preloading visible skills
                                 preloadVisibleSkills();
+
+                                // Load skill mastery script
+                                const masteryScript = document.createElement('script');
+                                masteryScript.src = 'js/skill-mastery.js';
+                                masteryScript.onload = () => {
+                                    console.log('skill-mastery.js loaded successfully');
+                                    // Initialize mastery indicators
+                                    initializeSkillMasteryIndicators();
+                                };
+                                masteryScript.onerror = () => console.error('Failed to load skill-mastery.js');
+                                document.body.appendChild(masteryScript);
 
                                 // Load category-intros.js
                                 const categoryIntrosScript = document.createElement('script');
@@ -361,6 +378,7 @@
                     });
             }
         }
+
         /* Function to initialize skills once HTML and scripts are loaded */
         function initializeSkills() {
             // Load the modal HTML

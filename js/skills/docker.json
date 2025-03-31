@@ -1,7 +1,7 @@
 {
     "title": "Docker",
     "icon": "devicon-docker-plain colored",
-    "experience": 88,
+    "experience": 60,
     "overview": "Docker is essential to my development and deployment workflow, enabling consistent environments from development to production.",
     "usage": "I use Docker to containerize applications, ensuring they run consistently across different environments and simplifying deployment and scaling.",
     "projects": ["LLM Platform", "Microservices Architecture", "CI/CD Pipeline"],

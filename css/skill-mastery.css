@@ -1,0 +1,137 @@
+/* CSS for Skill Mastery Indicators - Vertical Bars Version */
+
+/* Container for the skill icon and mastery bars */
+.skill-mastery-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Style for both icons and images */
+.skill-mastery-container img,
+.skill-mastery-container i,
+.skill-mastery-container .custom-icon {
+  position: relative;
+  z-index: 2;
+  /* Reset margins that were set in skills.css */
+  margin-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-mastery-container img {
+  max-width: 38px;
+  max-height: 38px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.skill-mastery-container i {
+  font-size: 2.2rem;
+}
+
+.skill-mastery-container .custom-icon {
+  width: 36px;
+  height: 36px;
+}
+
+/* Vertical bars mastery indicator */
+.skill-mastery-bars {
+  display: flex;
+  gap: 3px;
+  margin-top: 10px;
+  height: 18px;
+}
+
+.mastery-bar {
+  width: 6px;
+  height: 18px;
+  background-color: #eee;
+  border-radius: 2px;
+  transition: background-color 0.5s ease, transform 0.3s ease;
+}
+
+.mastery-bar.filled {
+  background-color: var(--primary);
+}
+
+/* Animation for bars when they come into view */
+@keyframes fillBar {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.skill-mastery-bars.animate .mastery-bar {
+  transform-origin: bottom;
+  animation: fillBar 0.5s ease-out forwards;
+}
+
+.skill-mastery-bars.animate .mastery-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.skill-mastery-bars.animate .mastery-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.skill-mastery-bars.animate .mastery-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.skill-mastery-bars.animate .mastery-bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* Mastery level text that appears on hover */
+.mastery-level-text {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(42, 122, 140, 0.9);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.skill-icon-item:hover .mastery-level-text {
+  opacity: 1;
+}
+
+/* Specific icon type adjustments */
+.skill-icon-item[data-skill="python"] .skill-mastery-container img,
+.skill-icon-item[data-skill="typescript"] .skill-mastery-container img,
+.skill-icon-item[data-skill="csharp"] .skill-mastery-container img {
+  max-width: 36px;
+  max-height: 36px;
+}
+
+/* Fix for FontAwesome icons */
+.skill-mastery-container .fa-solid.fa-brain {
+  color: var(--primary);
+}
+
+/* Ensure icons in container don't shift layout */
+.skill-icon-item:has(.skill-mastery-container) {
+  padding-top: 20px;
+}
+
+/* Hover effect for the skill item */
+.skill-icon-item:hover .mastery-bar.filled {
+  transform: scaleY(1.2);
+}

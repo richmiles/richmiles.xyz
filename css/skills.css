@@ -44,6 +44,8 @@
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
+    /* Increase top padding for mastery indicator */
+    padding-top: 30px;
 }
 
 .skill-icon-item:hover {
@@ -51,6 +53,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* Base icon styles - these will be overridden by mastery container */
 .skill-icon-item i {
     font-size: 2.5rem;
     margin-bottom: 15px;
@@ -69,169 +72,6 @@
     font-weight: 500;
     text-align: center;
     margin-bottom: 6px;
-}
-
-.skill-more {
-    font-size: 0.8rem;
-    color: var(--primary);
-    opacity: 0.8;
-    transition: opacity 0.3s;
-}
-
-.skill-icon-item:hover .skill-more {
-    opacity: 1;
-}
-
-/* Skills Modal */
-.skills-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    overflow: auto;
-    padding: 50px 20px;
-}
-
-.skills-modal-content {
-    background-color: white;
-    margin: 0 auto;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
-    position: relative;
-    animation: modalFadeIn 0.3s;
-}
-
-@keyframes modalFadeIn {
-    from {opacity: 0; transform: translateY(30px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    color: #777;
-    cursor: pointer;
-    transition: color 0.3s;
-    z-index: 10;
-}
-
-.modal-close:hover {
-    color: var(--primary);
-}
-
-.modal-header {
-    display: flex;
-    align-items: center;
-    padding: 25px 30px;
-    border-bottom: 1px solid #eee;
-    gap: 15px;
-}
-
-.modal-icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    border-radius: 50%;
-    font-size: 2rem;
-    flex-shrink: 0;
-}
-
-.modal-header h3 {
-    font-size: 1.8rem;
-    color: var(--primary);
-    margin: 0;
-}
-
-.modal-body {
-    padding: 30px;
-}
-
-.modal-section {
-    margin-bottom: 30px;
-}
-
-.modal-section h4 {
-    font-size: 1.2rem;
-    color: var(--secondary);
-    margin-bottom: 15px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #eee;
-}
-
-.experience-bar-container {
-    width: 100%;
-}
-
-.experience-bar {
-    height: 10px;
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    overflow: hidden;
-}
-
-.experience-fill {
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 5px;
-    transition: width 1s ease;
-    width: 0;
-}
-
-.experience-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    color: #777;
-}
-
-.modal-projects {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.modal-projects li {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-}
-
-.code-example {
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    padding: 15px;
-    font-family: monospace;
-    overflow-x: auto;
-    margin: 10px 0;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    }
-    
-    .skills-modal {
-        padding: 20px;
-    }
-    
-    .modal-header {
-        flex-direction: column;
-        text-align: center;
-    }
+    /* Adjust margin top for mastery indicator */
+    margin-top: 10px;
 }

@@ -1,7 +1,7 @@
 {
     "title": "Azure SQL",
     "icon": "devicon-azure-plain colored",
-    "experience": 80,
+    "experience": 100,
     "overview": "Azure SQL combines the familiar SQL Server engine with cloud-native features that I leverage for scalable, managed database services.",
     "usage": "I use Azure SQL Database for cloud-first applications, taking advantage of its elastic pools, automatic scaling, and integration with other Azure services.",
     "projects": [

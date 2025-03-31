@@ -1,7 +1,7 @@
 {
     "title": "FastAPI",
     "icon": "devicon-fastapi-plain colored",
-    "experience": 92,
+    "experience": 60,
     "overview": "FastAPI is my framework of choice for building high-performance Python APIs, offering automatic documentation, data validation, and asynchronous support.",
     "usage": "I use FastAPI for building RESTful APIs and microservices, particularly when performance and developer experience are priorities. The automatic OpenAPI documentation and data validation significantly speed up development.",
     "projects": [

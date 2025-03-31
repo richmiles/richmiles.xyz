@@ -1,7 +1,7 @@
 {
     "title": "PostgreSQL",
     "icon": "devicon-postgresql-plain colored",
-    "experience": 88,
+    "experience": 80,
     "overview": "PostgreSQL is my preferred relational database for its robustness, extensibility, and excellent support for JSON and other semi-structured data.",
     "usage": "I use PostgreSQL for applications requiring complex querying, transactional integrity, and advanced data types. Its excellent support for JSON makes it particularly useful for applications that need both relational and document-oriented storage.",
     "projects": [

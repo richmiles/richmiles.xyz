@@ -1,7 +1,7 @@
 {
     "title": "SQLAlchemy",
     "icon": "devicon-sqlalchemy-plain",
-    "experience": 88,
+    "experience": 60,
     "overview": "SQLAlchemy is my preferred ORM for Python projects, providing a flexible and powerful way to interact with databases using Pythonic code.",
     "usage": "I use SQLAlchemy to abstract database operations, making code more maintainable and database-agnostic. It's particularly useful for complex data models and relationships.",
     "projects": ["LLM Platform", "Content Management System", "Data Processing Pipeline"],

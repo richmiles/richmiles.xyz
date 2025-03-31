@@ -1,7 +1,7 @@
 {
     "title": "GitHub Actions",
     "icon": "devicon-github-original",
-    "experience": 85,
+    "experience": 60,
     "overview": "GitHub Actions is my primary CI/CD tool, allowing me to automate testing, building, and deployment workflows directly from my repositories.",
     "usage": "I use GitHub Actions to create automated pipelines for continuous integration and deployment, ensuring code quality and streamlining the release process.",
     "projects": ["LLM Platform", "Edventure Trek", "Multiple Open Source Projects"],

@@ -1,7 +1,7 @@
 {
     "title": "SQLite",
     "icon": "devicon-sqlite-plain colored",
-    "experience": 85,
+    "experience": 60,
     "overview": "SQLite provides a lightweight, serverless database solution that I use extensively for embedded applications, mobile apps, and desktop software.",
     "usage": "I leverage SQLite for applications that need reliable local data storage without the overhead of a client-server database system. It's been particularly useful for game development and offline-capable applications.",
     "projects": [
