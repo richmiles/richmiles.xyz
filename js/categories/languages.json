@@ -1,0 +1,6 @@
+{
+    "title": "Programming Languages",
+    "icon": "fa-solid fa-code",
+    "summary": "I choose languages based on project needs: Python for rapid development and data work, TypeScript for robust web applications, and C# for enterprise and game development.",
+    "content": "<p>When selecting a programming language for a project, I consider several key factors:</p><ul><li><strong>Python</strong> excels at data science, automation, and backend development with phenomenal library support. It's my go-to for rapid development and AI integration.</li><li><strong>TypeScript</strong> brings type safety to JavaScript, making it ideal for large-scale frontend applications. I use it when building robust web interfaces with React.</li><li><strong>C#</strong> offers a mature ecosystem for enterprise applications and game development. It's my choice for Unity game development and high-performance backend services.</li></ul><p>Rather than specializing in a single language, I believe in using the right tool for each specific challenge. This approach allows me to create more effective solutions by leveraging the strengths of each language.</p>"
+  }

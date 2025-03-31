@@ -7,7 +7,7 @@
     <title>Rich Miles - Software Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
@@ -287,6 +287,9 @@
          * Improved function to load the skills section
          * This ensures that skills-data.js is fully loaded before skills-modal.js
          */
+        /**
+ * Enhanced function to load the skills section with category intros
+ */
         function loadSkillsSection() {
             const skillsContainer = document.getElementById('skills-content-container');
 
@@ -294,6 +297,9 @@
             if (skillsContainer.querySelector('.loading-indicator')) {
                 // Load skill styles
                 loadCSS('css/skills.css');
+
+                // Also load the category intro styles
+                loadCSS('css/categories.css');
 
                 // Load skills grid HTML first
                 fetch('sections/skills.html')
@@ -315,7 +321,7 @@
                             document.body.appendChild(script);
                         });
 
-                        // Wait for skills-data.js to load, then load skills-modal.js and preload skills
+                        // Wait for skills-data.js to load
                         loadSkillsData
                             .then(() => {
                                 console.log('skills-data.js loaded successfully');
@@ -323,15 +329,26 @@
                                 // Start preloading visible skills
                                 preloadVisibleSkills();
 
+                                // Load category-intros.js
+                                const categoryIntrosScript = document.createElement('script');
+                                categoryIntrosScript.src = 'js/categories.js';
+                                categoryIntrosScript.onload = () => {
+                                    console.log('categories.js loaded successfully');
+                                    // Initialize category intro cards
+                                    initializeCategoryIntros();
+                                };
+                                categoryIntrosScript.onerror = () => console.error('Failed to load categories.js');
+                                document.body.appendChild(categoryIntrosScript);
+
                                 // Now load skills-modal.js
-                                const script = document.createElement('script');
-                                script.src = 'js/skills-modal.js';
-                                script.onload = () => {
+                                const modalScript = document.createElement('script');
+                                modalScript.src = 'js/skills-modal.js';
+                                modalScript.onload = () => {
                                     console.log('skills-modal.js loaded successfully');
                                     initializeSkills();
                                 };
-                                script.onerror = () => console.error('Failed to load skills-modal.js');
-                                document.body.appendChild(script);
+                                modalScript.onerror = () => console.error('Failed to load skills-modal.js');
+                                document.body.appendChild(modalScript);
                             })
                             .catch(error => {
                                 console.error('Error loading skills scripts:', error);
@@ -343,9 +360,8 @@
                         skillsContainer.innerHTML = '<p>Error loading skills. Please refresh the page.</p>';
                     });
             }
-        }       /**
-         * Function to initialize skills once HTML and scripts are loaded
-         */
+        }
+        /* Function to initialize skills once HTML and scripts are loaded */
         function initializeSkills() {
             // Load the modal HTML
             fetch('sections/skills-modal.html')
@@ -388,6 +404,24 @@
             script.src = src;
             script.onload = callback;
             document.body.appendChild(script);
+        }
+        /**
+         * Preload skills data for skills that are visible in the viewport
+         * This helps with performance by loading only what's needed initially
+         */
+        function preloadVisibleSkills() {
+            const skillItems = document.querySelectorAll('.skill-icon-item');
+
+            skillItems.forEach(item => {
+                if (isElementInViewport(item)) {
+                    const skillKey = item.getAttribute('data-skill');
+                    if (skillKey) {
+                        loadSkillData(skillKey).catch(error => {
+                            console.warn(`Failed to preload data for ${skillKey}:`, error);
+                        });
+                    }
+                }
+            });
         }
 
 

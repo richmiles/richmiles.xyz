@@ -1,13 +1,40 @@
 {
-    "title": "Python",
-    "icon": "devicon-python-plain colored",
-    "experience": 95,
-    "overview": "Python has been my primary language for backend development and data processing for 8+ years. I use it extensively for API development, AI/ML integration, and automation tools.",
-    "usage": "I primarily use Python with FastAPI to build high-performance backend services. For my LLM platform, Python's rich ecosystem of libraries (like Langchain, NLTK, and TensorFlow) allows me to rapidly prototype and deploy AI-powered features.",
-    "projects": [
-        "LLM Platform",
-        "Edventure Trek",
-        "Data Processing Pipelines"
-    ],
-    "insight": "<p>Python excels for rapid development and AI integrations, while TypeScript provides strong typing for frontend work, and C# offers excellent performance for game development.</p>\n<p>In most of my recent projects, I choose Python for data-heavy applications that need AI integration. For example, in my LLM platform, Python allowed me to:</p>\n<ul>\n    <li>Integrate multiple models through their SDKs with minimal boilerplate</li>\n    <li>Process and transform data efficiently using specialized libraries</li>\n    <li>Deploy quickly with containerization</li>\n</ul>\n<p>A key decision point is whether I need static typing (I'd choose TypeScript) or performance-critical operations that benefit from compiled code (C#).</p>"
+  "title": "Python",
+  "icon": "devicon-python-plain colored",
+  "overview": "While Python isn't my go-to language, it has become a valuable tool in my toolkit, especially due to its prominence in AI and data-related tasks. Initially adopted as an alternative to Matlab for data analysis, my recent work with Python has focused on backend development using FastAPI and integration with AI services like OpenAI.",
+  "experience": 7,
+  "usage": "I primarily use Python for backend development with FastAPI, integrating AI services via REST APIs, scripting, and occasional data analysis tasks. Its ease of use makes it ideal for quickly developing scripts or prototypes involving data processing.",
+  "projects":
+  [
+      "Spark Swarm",
+      "Edventure Trek Backend",
+      "Data Analysis Tools"
+  ],
+  "strengths": "Ease of entry, JSON integration, clean syntax with enforced indentation, excellent support for AI/ML services",
+  "weaknesses": "Weak and cumbersome type system, issues with resolving circular type references, less structured compared to languages like C# or TypeScript",
+  "useCases": "Backend APIs, AI integrations, scripting and automation, rapid data analysis",
+  "relations":
+  [
+      {
+          "skillId": "fastapi",
+          "strength": 9,
+          "type": "web"
+      },
+      {
+          "skillId": "postgresql",
+          "strength": 8,
+          "type": "data"
+      },
+      {
+          "skillId": "llm",
+          "strength": 9,
+          "type": "ai"
+      },
+      {
+          "skillId": "docker",
+          "strength": 7,
+          "type": "devops"
+      }
+  ],
+  "insight": "<p>Python’s straightforward syntax and native support for JSON streamline development tasks, especially when dealing with data interchange formats. Though its type system can be frustratingly limited compared to strongly-typed languages, Python’s robust ecosystem for AI integration—particularly with LLMs—keeps it relevant and highly useful for my workflow.</p><div class='code-example'>import openai<br><br># Example of Python with OpenAI integration<br>response = openai.chat.completions.create(<br>  model=\"gpt-4\",<br>  messages=[<br>    {\"role\": \"user\", \"content\": \"Explain the benefits of Python for AI integration\"}<br>  ]<br>)</div>"
 }

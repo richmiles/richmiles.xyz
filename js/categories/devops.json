@@ -1,0 +1,6 @@
+{
+    "title": "DevOps & Cloud",
+    "icon": "fa-solid fa-cloud",
+    "summary": "My DevOps approach focuses on automated CI/CD pipelines, containerization, and cloud-native architecture to ensure reliable, scalable applications with minimal operational overhead.",
+    "content": "<p>My DevOps philosophy centers on automation, reliability, and scalability:</p><ul><li><strong>GitHub Actions</strong> allows me to create efficient CI/CD pipelines that automatically test, build, and deploy applications with every code change. This ensures consistent quality and rapid delivery.</li><li><strong>Azure DevOps</strong> provides comprehensive tooling for the entire application lifecycle, from planning to monitoring. I've used it to implement blue/green deployments and build robust release pipelines.</li><li><strong>Docker</strong> enables consistent environments across development, testing, and production. By containerizing applications, I can ensure they run reliably anywhere while simplifying deployment and scaling.</li></ul><p>I believe effective DevOps is about creating a streamlined path from development to production that maintains quality while reducing friction. By automating repetitive tasks and implementing infrastructure as code, I can focus more time on creating value through new features and improvements rather than operational overhead.</p>"
+  }
