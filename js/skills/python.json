@@ -26,11 +26,6 @@
           "type": "data"
       },
       {
-          "skillId": "llm",
-          "strength": 9,
-          "type": "ai"
-      },
-      {
           "skillId": "docker",
           "strength": 7,
           "type": "devops"

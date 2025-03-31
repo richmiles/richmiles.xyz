@@ -1,7 +1,7 @@
 {
-    "title": "Azure DevOps",
+    "title": "ChatGPT",
     "icon": "devicon-azure-plain colored",
-    "experience": 82,
+    "experience": 80,
     "overview": "Azure DevOps provides a comprehensive set of tools for managing the entire application lifecycle that I've used extensively in enterprise environments.",
     "usage": "I use Azure DevOps for CI/CD pipelines, work item tracking, source control, and release management, particularly for projects that integrate with other Azure services.",
     "projects": ["Neowire", "Enterprise Data Platform", "Regulated Financial Application"],

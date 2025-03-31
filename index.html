@@ -7,12 +7,13 @@
     <title>Rich Miles - Software Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+
+    <link rel="stylesheet" href="css/skills-modal.css">
     <link rel="stylesheet" href="styles.css?v=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-    <!-- Header Section -->
     <!-- Header Section -->
     <header>
         <div class="header-pattern"></div>
@@ -283,16 +284,6 @@
             }
         }
 
-        /**
-         * Improved function to load the skills section
-         * This ensures that skills-data.js is fully loaded before skills-modal.js
-         */
-        /**
- * Enhanced function to load the skills section with category intros
- */
-        /**
-        * Enhanced function to load the skills section with mastery indicators
-        */
         function loadSkillsSection() {
             const skillsContainer = document.getElementById('skills-content-container');
 
@@ -307,6 +298,9 @@
                 // Also load the category intro styles
                 loadCSS('css/categories.css');
 
+                // Make sure modal CSS is loaded
+                loadCSS('css/skills-modal.css');
+
                 // Load skills grid HTML first
                 fetch('sections/skills.html')
                     .then(response => {
@@ -318,58 +312,91 @@
                     .then(html => {
                         skillsContainer.innerHTML = html;
 
-                        // Create a promise for skills-data.js loading
-                        const loadSkillsData = new Promise((resolve, reject) => {
-                            const script = document.createElement('script');
-                            script.src = 'js/skills-data.js';
-                            script.onload = resolve;
-                            script.onerror = () => reject(new Error('Failed to load skills-data.js'));
-                            document.body.appendChild(script);
-                        });
+                        // Load the modal HTML immediately to ensure it's in the DOM
+                        fetch('sections/skills-modal.html')
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(`Failed to fetch skills-modal.html: ${response.status}`);
+                                }
+                                return response.text();
+                            })
+                            .then(modalHtml => {
+                                const modalContainer = document.getElementById('skills-modal');
+                                if (modalContainer) {
+                                    modalContainer.innerHTML = modalHtml;
+                                    modalContainer.style.display = 'none'; // Ensure it's hidden
+                                }
 
-                        // Wait for skills-data.js to load
-                        loadSkillsData
-                            .then(() => {
-                                console.log('skills-data.js loaded successfully');
+                                // Now load scripts in the correct order
+                                // Create a promise for skills-data.js loading
+                                const loadSkillsData = new Promise((resolve, reject) => {
+                                    const script = document.createElement('script');
+                                    script.src = 'js/skills-data.js';
+                                    script.onload = resolve;
+                                    script.onerror = () => reject(new Error('Failed to load skills-data.js'));
+                                    document.body.appendChild(script);
+                                });
 
-                                // Start preloading visible skills
-                                preloadVisibleSkills();
+                                // Wait for skills-data.js to load
+                                loadSkillsData
+                                    .then(() => {
+                                        console.log('skills-data.js loaded successfully');
 
-                                // Load skill mastery script
-                                const masteryScript = document.createElement('script');
-                                masteryScript.src = 'js/skill-mastery.js';
-                                masteryScript.onload = () => {
-                                    console.log('skill-mastery.js loaded successfully');
-                                    // Initialize mastery indicators
-                                    initializeSkillMasteryIndicators();
-                                };
-                                masteryScript.onerror = () => console.error('Failed to load skill-mastery.js');
-                                document.body.appendChild(masteryScript);
+                                        // Start preloading visible skills
+                                        preloadVisibleSkills();
 
-                                // Load category-intros.js
-                                const categoryIntrosScript = document.createElement('script');
-                                categoryIntrosScript.src = 'js/categories.js';
-                                categoryIntrosScript.onload = () => {
-                                    console.log('categories.js loaded successfully');
-                                    // Initialize category intro cards
-                                    initializeCategoryIntros();
-                                };
-                                categoryIntrosScript.onerror = () => console.error('Failed to load categories.js');
-                                document.body.appendChild(categoryIntrosScript);
+                                        // Load skill mastery script
+                                        const masteryScript = document.createElement('script');
+                                        masteryScript.src = 'js/skill-mastery.js';
+                                        masteryScript.onload = () => {
+                                            console.log('skill-mastery.js loaded successfully');
+                                            // Explicitly call initializeSkillMasteryIndicators after a short delay
+                                            // to ensure DOM is ready and skillsData is loaded
+                                            setTimeout(() => {
+                                                if (typeof initializeSkillMasteryIndicators === 'function') {
+                                                    console.log('Initializing skill mastery indicators');
+                                                    initializeSkillMasteryIndicators();
+                                                }
+                                            }, 500);
+                                        };
+                                        masteryScript.onerror = () => console.error('Failed to load skill-mastery.js');
+                                        document.body.appendChild(masteryScript);
 
-                                // Now load skills-modal.js
-                                const modalScript = document.createElement('script');
-                                modalScript.src = 'js/skills-modal.js';
-                                modalScript.onload = () => {
-                                    console.log('skills-modal.js loaded successfully');
-                                    initializeSkills();
-                                };
-                                modalScript.onerror = () => console.error('Failed to load skills-modal.js');
-                                document.body.appendChild(modalScript);
+                                        // Load category-intros.js
+                                        const categoryIntrosScript = document.createElement('script');
+                                        categoryIntrosScript.src = 'js/categories.js';
+                                        categoryIntrosScript.onload = () => {
+                                            console.log('categories.js loaded successfully');
+                                            // Initialize category intro cards
+                                            if (typeof initializeCategoryIntros === 'function') {
+                                                initializeCategoryIntros();
+                                            }
+                                        };
+                                        categoryIntrosScript.onerror = () => console.error('Failed to load categories.js');
+                                        document.body.appendChild(categoryIntrosScript);
+
+                                        // Now load skills-modal.js last
+                                        const modalScript = document.createElement('script');
+                                        modalScript.src = 'js/skills-modal.js';
+                                        modalScript.onload = () => {
+                                            console.log('skills-modal.js loaded successfully');
+                                        };
+                                        modalScript.onerror = () => console.error('Failed to load skills-modal.js');
+                                        document.body.appendChild(modalScript);
+
+                                        // Dispatch event to notify that skills data is ready
+                                        // This will trigger the skill mastery initialization in skill-mastery.js
+                                        console.log('Dispatching skillsDataReady event');
+                                        const event = new CustomEvent('skillsDataReady');
+                                        document.dispatchEvent(event);
+                                    })
+                                    .catch(error => {
+                                        console.error('Error loading skills scripts:', error);
+                                        skillsContainer.innerHTML = '<p>Error loading skills data. Please refresh the page.</p>';
+                                    });
                             })
                             .catch(error => {
-                                console.error('Error loading skills scripts:', error);
-                                skillsContainer.innerHTML = '<p>Error loading skills data. Please refresh the page.</p>';
+                                console.error('Error loading skills modal HTML:', error);
                             });
                     })
                     .catch(error => {
@@ -378,7 +405,6 @@
                     });
             }
         }
-
         /* Function to initialize skills once HTML and scripts are loaded */
         function initializeSkills() {
             // Load the modal HTML

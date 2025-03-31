@@ -27,6 +27,7 @@ function checkSkillsDataLoaded() {
 function initSkillsModalEvents() {
     // Exit if already initialized
     if (skillsEventsInitialized) {
+        console.log("Skills events already initialized");
         return;
     }
     
@@ -39,19 +40,32 @@ function initSkillsModalEvents() {
     
     skillsEventsInitialized = true;
     
+    // Make sure the modal is hidden initially
+    const modal = document.getElementById('skills-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    } else {
+        console.error("Modal element not found!");
+        return;
+    }
+    
     // Set up click handlers for skill items
     const skillItems = document.querySelectorAll('.skill-icon-item');
-    const modal = document.getElementById('skills-modal');
     
     // Add click listeners to each skill item
     skillItems.forEach(item => {
         item.addEventListener('click', function() {
             const skillKey = this.getAttribute('data-skill');
-            openSkillModal(skillKey);
+            console.log("Skill clicked:", skillKey);
+            if (skillKey) {
+                openSkillModal(skillKey);
+            } else {
+                console.warn("No data-skill attribute found on clicked element");
+            }
         });
     });
     
-    // Set up close button - THIS NEEDS TO BE PROPERLY ATTACHED AFTER MODAL CONTENT IS LOADED
+    // Set up close button
     document.addEventListener('click', function(event) {
         // Check if the clicked element is the close button or has the close button class
         if (event.target.classList.contains('modal-close')) {
@@ -81,11 +95,15 @@ function initSkillsModalEvents() {
  * @param {string} skillKey - The key of the skill to display
  */
 async function openSkillModal(skillKey) {
-    // Show loading state in modal
+    const modal = document.getElementById('skills-modal');
+    
+    // Show modal first with loading state
+    modal.style.display = 'block';
     document.getElementById('modal-title').textContent = 'Loading...';
     document.getElementById('modal-overview').textContent = 'Loading skill information...';
-    document.getElementById('skills-modal').style.display = 'block';
     document.body.style.overflow = 'hidden'; // Prevent scrolling
+    
+    console.log("Opening modal for skill:", skillKey);
     
     try {
         // Load skill data on demand
@@ -95,30 +113,44 @@ async function openSkillModal(skillKey) {
             throw new Error('Failed to load skill data');
         }
         
+        console.log("Loaded skill data:", skillData.title);
+        
+        // Set icon class based on whether it's an image, font icon, or custom icon
+        const modalIcon = document.getElementById('modal-icon');
+        modalIcon.className = skillData.icon || '';
+        
         // Update modal with skill data
-        document.getElementById('modal-icon').className = skillData.icon;
-        document.getElementById('modal-title').textContent = skillData.title;
-        document.getElementById('modal-overview').textContent = skillData.overview;
-        document.getElementById('modal-usage').textContent = skillData.usage;
+        document.getElementById('modal-title').textContent = skillData.title || 'Untitled Skill';
+        document.getElementById('modal-overview').textContent = skillData.overview || 'No overview available';
+        document.getElementById('modal-usage').textContent = skillData.usage || 'No usage information available';
         
         // Set experience bar with animation
         const expBar = document.getElementById('modal-experience');
         expBar.style.width = '0';
         setTimeout(() => {
-            expBar.style.width = skillData.experience + '%';
+            expBar.style.width = (skillData.experience || 0) + '%';
         }, 100);
         
         // Clear and repopulate projects
         const projectsList = document.getElementById('modal-projects');
         projectsList.innerHTML = '';
-        skillData.projects.forEach(project => {
+        if (skillData.projects && Array.isArray(skillData.projects)) {
+            skillData.projects.forEach(project => {
+                const li = document.createElement('li');
+                li.textContent = project;
+                projectsList.appendChild(li);
+            });
+        } else {
             const li = document.createElement('li');
-            li.textContent = project;
+            li.textContent = 'No projects listed';
             projectsList.appendChild(li);
-        });
+        }
         
         // Set insight content (may contain HTML)
-        document.getElementById('modal-insight').innerHTML = skillData.insight;
+        const insightElement = document.getElementById('modal-insight');
+        if (insightElement) {
+            insightElement.innerHTML = skillData.insight || 'No additional insights available';
+        }
         
     } catch (error) {
         console.error('Error loading skill details:', error);
@@ -131,7 +163,9 @@ async function openSkillModal(skillKey) {
  * Close the skills modal
  */
 function closeSkillModal() {
-    document.getElementById('skills-modal').style.display = 'none';
+    console.log("Closing skill modal");
+    const modal = document.getElementById('skills-modal');
+    modal.style.display = 'none';
     document.body.style.overflow = ''; // Restore scrolling
 }
 
