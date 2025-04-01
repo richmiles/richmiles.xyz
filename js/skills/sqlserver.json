@@ -2,12 +2,5 @@
   "title": "SQL Server",
   "icon": "devicon-microsoftsqlserver-plain colored",
   "experience": 85,
-  "overview": "Microsoft SQL Server has been a cornerstone of my enterprise database toolkit and was my first true SQL database after my early days with Access. It enabled me to master performance tuning and deep integration with other Microsoft technologies.",
-  "usage": "I've used SQL Server extensively in Azure environments, leveraging its performance features, advanced security (like row-level security and dynamic data masking), and tight integration with the Microsoft ecosystem. In my early career, most work was done at the database level with stored procedures and even handwritten cursors, long before ORMs became sophisticated.",
-  "projects": [
-    "Neowire Enterprise Platform",
-    "Corporate Analytics System",
-    "Business Intelligence Dashboard"
-  ],
-  "insight": "<p>SQL Server is where I truly honed my database skills. I cut my teeth on it after working with Access, spending countless hours writing stored procedures—and I even remember being proud of writing a cursor entirely from memory. One of my pet peeves was encountering primary keys defined as tinyints for lookup tables, which eventually hit their limit and forced us to rearchitect using ints. Autoincrement columns also posed challenges when enabling remote data collection, which eventually led me to standardize on UUIDs. Although UUIDs come with trade-offs, such as larger index sizes, I found that the actual impact on index growth was manageable for my workloads. I remain intrigued by the potential of UUIDv7 to mitigate some of these issues further.</p><div class=\"code-example\">-- Example of partitioning for performance in SQL Server\nCREATE PARTITION FUNCTION [UserDataPartitionFunction](DATE) \nAS RANGE RIGHT FOR VALUES ('2020-01-01', '2021-01-01', '2022-01-01', '2023-01-01', '2024-01-01');\n\nCREATE PARTITION SCHEME [UserDataPartitionScheme] \nAS PARTITION [UserDataPartitionFunction] \nTO ([PRIMARY], [UserData2020], [UserData2021], [UserData2022], [UserData2023], [PRIMARY]);</div>"
+  "overview": "SQL Server is where I truly learned database fundamentals, spending countless hours optimizing queries and writing stored procedures. Its mature tooling, especially SQL Server Data Tools, simplified database schema management and deployment. After wrestling with synchronization issues from auto-increment integers in remote offline scenarios, I embraced UUIDs despite their quirks. SQL Server remains my benchmark for stability and predictability."
 }
