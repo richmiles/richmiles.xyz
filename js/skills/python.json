@@ -1,35 +1,6 @@
 {
-  "title": "Python",
-  "icon": "devicon-python-plain colored",
-  "overview": "While Python isn't my go-to language, it has become a valuable tool in my toolkit, especially due to its prominence in AI and data-related tasks. Initially adopted as an alternative to Matlab for data analysis, my recent work with Python has focused on backend development using FastAPI and integration with AI services like OpenAI.",
-  "experience": 70,
-  "usage": "I primarily use Python for backend development with FastAPI, integrating AI services via REST APIs, scripting, and occasional data analysis tasks. Its ease of use makes it ideal for quickly developing scripts or prototypes involving data processing.",
-  "projects":
-  [
-      "Spark Swarm",
-      "Edventure Trek Backend",
-      "Data Analysis Tools"
-  ],
-  "strengths": "Ease of entry, JSON integration, clean syntax with enforced indentation, excellent support for AI/ML services",
-  "weaknesses": "Weak and cumbersome type system, issues with resolving circular type references, less structured compared to languages like C# or TypeScript",
-  "useCases": "Backend APIs, AI integrations, scripting and automation, rapid data analysis",
-  "relations":
-  [
-      {
-          "skillId": "fastapi",
-          "strength": 9,
-          "type": "web"
-      },
-      {
-          "skillId": "postgresql",
-          "strength": 8,
-          "type": "data"
-      },
-      {
-          "skillId": "docker",
-          "strength": 7,
-          "type": "devops"
-      }
-  ],
-  "insight": "<p>Python’s straightforward syntax and native support for JSON streamline development tasks, especially when dealing with data interchange formats. Though its type system can be frustratingly limited compared to strongly-typed languages, Python’s robust ecosystem for AI integration—particularly with LLMs—keeps it relevant and highly useful for my workflow.</p><div class='code-example'>import openai<br><br># Example of Python with OpenAI integration<br>response = openai.chat.completions.create(<br>  model=\"gpt-4\",<br>  messages=[<br>    {\"role\": \"user\", \"content\": \"Explain the benefits of Python for AI integration\"}<br>  ]<br>)</div>"
-}
+    "title": "Python",
+    "icon": "devicon-python-plain colored",
+    "experience": 70,
+    "overview": "Python crept into my toolkit as a Matlab replacement for data analysis, but lately, it's been my go-to for backend APIs, rapid scripts, and wrangling chatty AI models. While its loosely-enforced types often feel like coding with bumpers in a bowling alley, Python's straightforward syntax and native JSON affinity make it indispensable, particularly when hooking into services like OpenAI."
+  }

@@ -1,6 +1,5 @@
 {
-    "title": "Frameworks & Libraries",
-    "icon": "fa-solid fa-cubes",
-    "summary": "I utilize frameworks that boost productivity while maintaining flexibility: FastAPI for high-performance Python backends, React for interactive frontends, and Vite for optimized build systems.",
-    "content": "<p>My approach to frameworks and libraries focuses on balancing developer productivity with application performance:</p><ul><li><strong>FastAPI</strong> has become my preferred backend framework due to its incredible speed, automatic documentation, and built-in validation. It's particularly well-suited for building modern API services that integrate with LLMs and other AI services.</li><li><strong>React</strong> provides the perfect balance of flexibility and structure for frontend development. I use it with TypeScript to create maintainable and scalable user interfaces with excellent performance characteristics.</li><li><strong>Vite</strong> dramatically improves the development experience with near-instant hot module replacement and optimized builds. It's become an essential tool in my frontend development workflow.</li></ul><p>I believe in choosing frameworks that solve specific problems rather than trying to force a one-size-fits-all solution. This approach allows me to leverage the best tools for each aspect of an application while maintaining a cohesive architecture.</p>"
-  }
+  "title": "Frameworks & Libraries",
+  "icon": "fa-solid fa-cubes",
+  "summary": "FastAPI lets me pretend I need performance. React because herd mentality has its perks. Vite exists primarily because Webpack shouldn't. Entity Framework because LINQ makes databases tolerable. SQLAlchemy because Python never got the LINQ memo."
+}

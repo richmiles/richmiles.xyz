@@ -1,6 +1,5 @@
 {
-    "title": "AI & LLM Integration",
-    "icon": "fa-solid fa-brain",
-    "summary": "I leverage multiple LLM platforms to create intelligent applications that can analyze data, generate content, and automate workflows by combining API expertise with prompt engineering.",
-    "content": "<p>My approach to AI integration focuses on practical application of Large Language Models to solve real-world problems:</p><ul><li><strong>LLM Integration</strong> is at the core of my current work, where I create systems that leverage the unique capabilities of different AI models for distinct tasks. This includes building context-rich interfaces, semantic search systems, and automated agents.</li><li><strong>ChatGPT/OpenAI</strong> provides powerful general-purpose capabilities that I integrate into applications for content generation, data analysis, and natural language understanding.</li><li><strong>Claude/Anthropic</strong> excels at nuanced reasoning and safety, which I utilize for tasks requiring careful analysis and long-context processing.</li><li><strong>Gemini/Google</strong> brings strong multimodal capabilities that I incorporate for applications needing both text and visual understanding.</li></ul><p>I believe the true power of AI comes from thoughtful integration with human workflows, not just implementing technology for its own sake. By focusing on the specific problems AI can solve while designing appropriate guardrails, I create systems that enhance human capabilities rather than attempting to replace them.</p>"
-  }
+  "title": "AI & LLM Integration",
+  "icon": "fa-solid fa-brain",
+  "summary": "I cut my teeth on ChatGPT. Claude is great once you convince the ethics board you're not a monster. Gemini is solid tech trapped behind Google's impossible API gatekeeping. DeepSeek is fast, cheap, and probably fine—if data residency isn't your thing."
+}

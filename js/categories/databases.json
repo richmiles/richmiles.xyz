@@ -1,6 +1,5 @@
 {
-    "title": "Database Technologies",
-    "icon": "fa-solid fa-database",
-    "summary": "I select databases based on project scale and requirements: PostgreSQL for feature-rich applications, SQL Server for enterprise integration, and SQLite for embedded and lightweight solutions.",
-    "content": "<p>My approach to database selection is pragmatic, focusing on:</p><ul><li><strong>PostgreSQL</strong> is my preferred choice for most applications due to its robust feature set, excellent performance, and strong support for JSON data. It's perfect for applications that need to scale.</li><li><strong>SQL Server</strong> comes into play for enterprise environments, especially when integrating with existing Microsoft technology stacks or when specific SQL Server features are required.</li><li><strong>SQLite</strong> is invaluable for embedded applications, local data storage, and development environments where a lightweight, zero-configuration database is ideal.</li><li><strong>SQLAlchemy</strong> provides a powerful abstraction layer that lets me efficiently work with multiple database engines through a consistent API.</li></ul><p>I believe in designing database schemas thoughtfully from the start, with proper normalization and performance considerations, rather than dealing with optimization problems later.</p>"
-  }
+  "title": "Database Technologies",
+  "icon": "fa-solid fa-database",
+  "summary": "PostgreSQL offers complexity disguised as flexibility. SQL Server: where data goes to wear a tie. SQLite is quick, dirty, and just reliable enough. MySQL? Not even once."
+}
