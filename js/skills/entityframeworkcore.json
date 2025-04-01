@@ -1,5 +1,5 @@
 {
-    "title": "Entity Framework Core",
+    "title": "Entity Framework",
     "icon": "devicon-dotnet-plain colored",
     "overview": "I've been working with EF Core since version 1.0, using it to streamline data access in .NET applications. My experience spans both code-first and database-first migrations—with a preference for the latter when it fits the project context. Over time, I've leveraged EF scaffolding tools and even developed a custom tool to compare the EF model against the actual database schema to highlight inconsistencies.",
     "experience": 80,
