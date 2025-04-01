@@ -1,34 +1,6 @@
 {
-    "title": "Entity Framework",
-    "icon": "devicon-dotnet-plain colored",
-    "overview": "I've been working with EF Core since version 1.0, using it to streamline data access in .NET applications. My experience spans both code-first and database-first migrations—with a preference for the latter when it fits the project context. Over time, I've leveraged EF scaffolding tools and even developed a custom tool to compare the EF model against the actual database schema to highlight inconsistencies.",
-    "experience": 80,
-    "usage": "I use EF Core to build and manage robust data access layers in .NET applications. It supports rapid prototyping as well as enterprise-level solutions, whether I’m using a code-first or database-first approach.",
-    "projects": [
-      "Legacy Data Modernization",
-      "EF Schema Validator",
-      "Enterprise Data Access Layer"
-    ],
-    "strengths": "Powerful ORM capabilities, flexible migration strategies, robust tooling and scaffolding support, seamless integration with .NET, and efficient LINQ querying.",
-    "weaknesses": "Can involve complex migrations across environments, sometimes requires verbose configuration, and may produce opaque error messages in advanced scenarios.",
-    "useCases": "Building data access layers, managing database migrations, schema validation, and modernizing legacy systems in enterprise applications.",
-    "relations": [
-      {
-        "skillId": "csharp",
-        "strength": 9,
-        "type": "language"
-      },
-      {
-        "skillId": "sqlserver",
-        "strength": 8,
-        "type": "database"
-      },
-      {
-        "skillId": "docker",
-        "strength": 7,
-        "type": "devops"
-      }
-    ],
-    "insight": "<p>Entity Framework Core simplifies data access in .NET by abstracting the database layer with a powerful ORM. Its support for both code-first and database-first approaches allows me to adapt to various project needs. While there are challenges like managing complex migrations and verbose configurations, the benefits of robust scaffolding tools and seamless LINQ integration make EF Core an indispensable part of my toolkit.</p><div class='code-example'>// Example of EF Core usage in C#<br>using(var context = new AppDbContext()) {<br>    var activeRecords = context.Records.Where(r => r.IsActive).ToList();<br>}</div>"
-  }
-  
+  "title": "Entity Framework",
+  "icon": "devicon-dotnet-plain colored",
+  "experience": 80,
+  "overview": "Entity Framework feels incredibly intuitive to me. Mapping database records directly to objects just clicks. LINQ is impressive, but I find myself gravitating more toward the fluent API, enjoying its clear, expressive approach. Whether handling migrations or scaffolding, EF remains comfortably familiar territory."
+}

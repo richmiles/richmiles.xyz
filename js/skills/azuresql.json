@@ -2,5 +2,5 @@
     "title": "Azure SQL",
     "icon": "devicon-azure-plain colored",
     "experience": 100,
-    "overview": "Azure SQL felt like SQL Server on steroids—familiar yet distinctly cloud-native. I loved the automated indexing suggestions and built-in security guidelines, both of which saved countless hours tuning databases. The DTU pricing model was initially bizarre, but once understood, it became a powerful way to optimize costs, particularly for elastic workloads."
+    "overview": "Azure SQL felt like SQL Server on steroids: familiar yet distinctly cloud-native. I loved the automated indexing suggestions and built-in security guidelines, both of which saved countless hours tuning databases. The DTU pricing model was initially bizarre, but once understood, it became a powerful way to optimize costs, particularly for elastic workloads."
   }

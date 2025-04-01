@@ -1,10 +1,6 @@
 {
-    "title": "React",
-    "icon": "devicon-react-original colored",
-    "experience": 82,
-    "overview": "React is my framework of choice for building interactive and responsive user interfaces for web applications.",
-    "usage": "I leverage React's component-based architecture to create maintainable and reusable UI elements. Combined with TypeScript, it provides a robust foundation for complex frontend applications.",
-    "projects": ["LLM Platform UI", "Analytics Dashboard", "Customer Portal"],
-    "insight": "<p>React has been instrumental in my approach to frontend development, particularly when creating UIs for complex data visualization and AI interactions.</p><p>For the LLM Platform UI, I implemented a custom hook system that manages the state of conversations with different AI models:</p><div class=\"code-example\">// Custom hook for managing conversation state\nconst useConversation = (modelId) => {\n  const [messages, setMessages] = useState([]);\n  const [isLoading, setIsLoading] = useState(false);\n\n  const sendMessage = async (content) => {\n    setIsLoading(true);\n    const newMessages = [...messages, { role: 'user', content }];\n    setMessages(newMessages);\n\n    try {\n      const service = modelServices[modelId];\n      const response = await service.sendMessage(newMessages);\n\n      setMessages(prev => [...prev, { \n        role: 'assistant', \n        content: response.content,\n        model: modelId\n      }]);\n    } catch (error) {\n      console.error('Error communicating with LLM:', error);\n    } finally {\n      setIsLoading(false);\n    }\n  };\n\n  return { messages, isLoading, sendMessage };\n};</div><p>This pattern allowed me to abstract away the complexity of working with different LLM providers while maintaining a consistent UI experience. React's state management and effect system made it possible to handle the asynchronous nature of LLM responses elegantly.</p>"
-  }
-  
+  "title": "React",
+  "icon": "devicon-react-original colored",
+  "experience": 82,
+  "overview": "React and I have a complicated relationship. Components make sense and reusable UIs are great, especially with TypeScript. But throw in hooks like useMemo or refs—whatever those actually do—and I'm ready to rethink my career choices. Still, the widespread adoption means endless resources, community support, and ready-to-use libraries, which keeps me reluctantly committed."
+}
