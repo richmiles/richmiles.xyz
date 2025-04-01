@@ -1,13 +1,14 @@
 {
     "title": "PostgreSQL",
     "icon": "devicon-postgresql-plain colored",
-    "experience": 80,
-    "overview": "PostgreSQL is my preferred relational database for its robustness, extensibility, and excellent support for JSON and other semi-structured data.",
-    "usage": "I use PostgreSQL for applications requiring complex querying, transactional integrity, and advanced data types. Its excellent support for JSON makes it particularly useful for applications that need both relational and document-oriented storage.",
+    "experience": 60,
+    "overview": "PostgreSQL is my preferred relational database for its robustness, extensibility, and strong support for JSON and other semi-structured data. Although my primary expertise is in SQL Server and T-SQL, I value PostgreSQL for projects that require modern SQL capabilities.",
+    "usage": "I use PostgreSQL for applications that need complex querying, transactional integrity, and advanced data types. I often work with it in a Docker container environment and scaffold databases using SQLAlchemy with Alembic.",
     "projects": [
-        "LLM Platform",
-        "Neowire",
-        "Customer Data Platform"
+      "LLM Platform",
+      "Neowire",
+      "Customer Data Platform"
     ],
-    "insight": "<p>In my database design work, I've found that PostgreSQL offers the perfect balance of traditional relational features and modern capabilities:</p><div class=\"code-example\">-- Example of combining relational and JSON capabilities in PostgreSQL\nCREATE TABLE user_interactions (\n    id SERIAL PRIMARY KEY,\n    user_id INTEGER REFERENCES users(id),\n    interaction_time TIMESTAMP WITH TIME ZONE,\n    interaction_type VARCHAR(50),\n    context JSONB,\n    vector_embedding VECTOR(1536)  -- Using pgvector extension\n);\n\n-- Query that combines relational and vector search\nSELECT * FROM user_interactions\nWHERE interaction_type = 'query'\nAND context->>'topic' = 'technical support'\nORDER BY vector_embedding <-> $embedding_vector\nLIMIT 10;</div><p>This approach lets me combine structured data with the flexibility needed for AI applications. By leveraging PostgreSQL extensions like pgvector, I can perform semantic searches directly in the database rather than requiring a separate vector database.</p>"
-}
+    "insight": "<p>While I am well-versed in standard SQL, most of my hands-on experience has been with SQL Server and T-SQL, often through an ORM (EF Core) that minimizes raw join writing. My first exposure to JSON columns came via MySQL, and though I haven't deeply compared it to PostgreSQL's implementation, I appreciate PostgreSQL's modern approach to handling semi-structured data. Leveraging PostgreSQL in containerized setups and using tools like SQLAlchemy with Alembic has bolstered my confidence in tackling advanced problems, given the common concepts shared across SQL dialects.</p><div class=\"code-example\">-- Example of combining relational and JSON capabilities in PostgreSQL\nCREATE TABLE user_interactions (\n    id SERIAL PRIMARY KEY,\n    user_id INTEGER REFERENCES users(id),\n    interaction_time TIMESTAMP WITH TIME ZONE,\n    interaction_type VARCHAR(50),\n    context JSONB,\n    vector_embedding VECTOR(1536)  -- Using pgvector extension\n);\n\nSELECT * FROM user_interactions\nWHERE interaction_type = 'query'\nAND context->>'topic' = 'technical support'\nORDER BY vector_embedding <-> $embedding_vector\nLIMIT 10;</div>"
+  }
+  

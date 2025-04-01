@@ -1,13 +1,12 @@
 {
-    "title": "SQLite",
-    "icon": "devicon-sqlite-plain colored",
+    "title": "MySQL",
+    "icon": "devicon-mysql-plain colored",
     "experience": 40,
-    "overview": "SQLite provides a lightweight, serverless database solution that I use extensively for embedded applications, mobile apps, and desktop software.",
-    "usage": "I leverage SQLite for applications that need reliable local data storage without the overhead of a client-server database system. It's been particularly useful for game development and offline-capable applications.",
+    "overview": "MySQL served as the database backend for Edventure Trek, but it quickly became apparent that it wasn't my preferred platform. On my development machine, it tended to consume all available memory, forcing me to frequently reinstall and redeploy the database.",
+    "usage": "I used MySQL exclusively for Edventure Trek. With no external access to the database, I had to SSH into the server to run queries directly from the command line, often copying the output into an LLM for further analysis.",
     "projects": [
-        "Edventure Trek",
-        "Local Analytics Cache",
-        "Offline-First Mobile App"
+      "Edventure Trek"
     ],
-    "insight": "<p>SQLite's unique file-based architecture makes it perfect for certain use cases that other databases can't easily address:</p><ul><li>Zero-configuration deployment - the database is just a file</li><li>Cross-platform compatibility with the same database file</li><li>Excellent performance for read-heavy workloads</li></ul><p>For Edventure Trek, I implemented a local-first data architecture using SQLite:</p><div class=\"code-example\">// C# code for SQLite implementation in Unity\npublic class DatabaseManager {\n    private SQLiteConnection _connection;\n\n    public void Initialize() {\n        string dbPath = Path.Combine(Application.persistentDataPath, \"game_data.db\");\n        _connection = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);\n\n        _connection.Execute(@\"\n            CREATE TABLE IF NOT EXISTS PlayerProgress (\n                LevelId TEXT PRIMARY KEY,\n                CompletionDate TEXT,\n                Score INTEGER,\n                TimeSpent INTEGER,\n                Attempts INTEGER\n            )\n        \");\n    }\n\n    public async Task SyncWithCloud() {\n        if (IsConnected()) {\n            var localData = GetUnsyncedData();\n            await _apiClient.SyncPlayerProgress(localData);\n            MarkDataSynced(localData);\n        }\n    }\n}</div><p>This approach allowed players to continue playing and making progress even when offline, with data syncing to our cloud database when connectivity was restored.</p>"
-}
+    "insight": "<p>My experience with MySQL was a mixed bag. It marked my first encounter with JSON columns in a relational database—one column held an ID and the other a JSON object. I struggled with querying this data until a generated column was introduced to simplify access. Despite its operational challenges, such as high memory usage and limited accessibility, I was still able to execute advanced SQL queries, like generating z-scores to rank users based on inventory and XP. Ultimately, while MySQL's SQL capabilities were comparable to other platforms, the overhead in managing it often outweighed its benefits.</p><div class=\"code-example\">-- Example of a generated column in MySQL for easier JSON querying\nCREATE TABLE user_data (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  raw_data JSON,\n  user_id INT,\n  generated_name VARCHAR(100) AS (JSON_UNQUOTE(JSON_EXTRACT(raw_data, '$.name'))) STORED\n);\n\n-- Query using the generated column\nSELECT id, generated_name FROM user_data\nWHERE generated_name = 'John Doe';</div>"
+  }
+  

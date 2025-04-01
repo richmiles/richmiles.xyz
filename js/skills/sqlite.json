@@ -2,12 +2,13 @@
     "title": "SQLite",
     "icon": "devicon-sqlite-plain colored",
     "experience": 60,
-    "overview": "SQLite provides a lightweight, serverless database solution that I use extensively for embedded applications, mobile apps, and desktop software.",
-    "usage": "I leverage SQLite for applications that need reliable local data storage without the overhead of a client-server database system. It's been particularly useful for game development and offline-capable applications.",
+    "overview": "SQLite provides a lightweight, serverless database solution ideal for quick and dirty data storage in embedded applications, mobile apps, desktop software, or even small-scale websites.",
+    "usage": "I primarily use SQLite for reliable on-device storage without the overhead of a full client-server system. Most of my experience comes from working with pre-existing SQLite databases via EF Core, rather than spinning one up from scratch. This simplicity makes it a solid choice over ad-hoc solutions like Excel or CSV files, and in some cases, I even prefer it to SwiftData.",
     "projects": [
-        "Edventure Trek",
-        "Local Analytics Cache",
-        "Offline-First Mobile App"
+      "Edventure Trek",
+      "Local Analytics Cache",
+      "Offline-First Mobile App"
     ],
-    "insight": "<p>SQLite's unique file-based architecture makes it perfect for certain use cases that other databases can't easily address:</p><ul><li>Zero-configuration deployment - the database is just a file</li><li>Cross-platform compatibility with the same database file</li><li>Excellent performance for read-heavy workloads</li></ul><p>For Edventure Trek, I implemented a local-first data architecture using SQLite:</p><div class=\"code-example\">// C# code for SQLite implementation in Unity\npublic class DatabaseManager {\n    private SQLiteConnection _connection;\n\n    public void Initialize() {\n        string dbPath = Path.Combine(Application.persistentDataPath, \"game_data.db\");\n        _connection = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);\n\n        _connection.Execute(@\"\n            CREATE TABLE IF NOT EXISTS PlayerProgress (\n                LevelId TEXT PRIMARY KEY,\n                CompletionDate TEXT,\n                Score INTEGER,\n                TimeSpent INTEGER,\n                Attempts INTEGER\n            )\n        \");\n    }\n\n    public async Task SyncWithCloud() {\n        if (IsConnected()) {\n            var localData = GetUnsyncedData();\n            await _apiClient.SyncPlayerProgress(localData);\n            MarkDataSynced(localData);\n        }\n    }\n}</div><p>This approach allowed players to continue playing and making progress even when offline, with data syncing to our cloud database when connectivity was restored.</p>"
-}
+    "insight": "<p>SQLite's file-based architecture offers zero-configuration deployment and cross-platform compatibility, making it a go-to solution for minimalistic data storage. Although my work with SQLite has mostly involved pre-populated databases integrated via EF Core, it remains a compelling option for hosting simple websites or lightweight applications where a full-fledged database system would be overkill.</p><div class=\"code-example\">// Example of initializing a SQLite database using EF Core in C#\npublic class AppDbContext : DbContext {\n    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {\n        optionsBuilder.UseSqlite(\"Data Source=app.db\");\n    }\n\n    public DbSet<PlayerProgress> PlayerProgress { get; set; }\n}\n\n// Creating the database from scratch with migrations\nusing (var context = new AppDbContext()) {\n    context.Database.Migrate();\n}</div><p>This approach provides a robust and simple alternative to managing data through spreadsheets or CSV files, while still offering the power of a relational database.</p>"
+  }
+  
