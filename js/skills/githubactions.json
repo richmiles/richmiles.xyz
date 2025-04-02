@@ -1,0 +1,6 @@
+{
+  "title": "GitHub Actions",
+  "icon": "devicon-github-original",
+  "experience": 60,
+  "overview": "GitHub Actions became my default CI/CD tool mainly due to sheer convenience. All my code, personal and professional, lives on GitHub anyway. YAML workflows sometimes feel like spells conjured by a drunken wizard—occasionally effective but frequently confusing. Despite that, I've set up practical pipelines and not-so-practical pipelines, including a ChatGPT-based pull request reviewer. Spoiler: It wasn't helpful."
+}

@@ -1,10 +1,6 @@
 {
-    "title": "Docker",
-    "icon": "devicon-docker-plain colored",
-    "experience": 60,
-    "overview": "Docker is essential to my development and deployment workflow, enabling consistent environments from development to production.",
-    "usage": "I use Docker to containerize applications, ensuring they run consistently across different environments and simplifying deployment and scaling.",
-    "projects": ["LLM Platform", "Microservices Architecture", "CI/CD Pipeline"],
-    "insight": "<p>For the LLM Platform, I designed a multi-container architecture that balanced resource efficiency with isolation needs:</p><div class=\"code-example\"># docker-compose.yml\nversion: '3.8'\n\nservices:\n  api:\n    build: \n      context: ./backend\n      dockerfile: Dockerfile\n    ports:\n      - \"8000:8000\"\n    environment:\n      - DATABASE_URL=postgresql://postgres:password@db:5432/llm_platform\n      - REDIS_URL=redis://redis:6379/0\n      - OPENAI_API_KEY=${OPENAI_API_KEY}\n      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}\n    depends_on:\n      - db\n      - redis\n    restart: unless-stopped\n\n  worker:\n    build:\n      context: ./backend\n      dockerfile: Dockerfile.worker\n    environment:\n      - DATABASE_URL=postgresql://postgres:password@db:5432/llm_platform\n      - REDIS_URL=redis://redis:6379/0\n      - OPENAI_API_KEY=${OPENAI_API_KEY}\n      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}\n    depends_on:\n      - db\n      - redis\n    restart: unless-stopped\n\n  frontend:\n    build:\n      context: ./frontend\n    ports:\n      - \"3000:80\"\n    restart: unless-stopped\n\n  db:\n    image: postgres:14\n    volumes:\n      - postgres_data:/var/lib/postgresql/data\n    environment:\n      - POSTGRES_PASSWORD=password\n      - POSTGRES_DB=llm_platform\n    restart: unless-stopped\n\n  redis:\n    image: redis:6\n    volumes:\n      - redis_data:/data\n    restart: unless-stopped\n\n  weaviate:\n    image: semitechnologies/weaviate:1.18.0\n    ports:\n      - \"8080:8080\"\n    environment:\n      QUERY_DEFAULTS_LIMIT: 25\n      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'\n      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'\n    volumes:\n      - weaviate_data:/var/lib/weaviate\n    restart: unless-stopped\n\nvolumes:\n  postgres_data:\n  redis_data:\n  weaviate_data:</div><p>This separation of concerns allowed for independent scaling of the components that needed it most (like the worker processes for handling LLM API calls), while keeping the overall system maintainable.</p>"
-  }
-  
+  "title": "Docker",
+  "icon": "devicon-docker-plain colored",
+  "experience": 60,
+  "overview": "Docker finally clicked when I needed database servers without the installation trauma. Soon, my innocent experiments spiraled into elaborate docker-compose orchestrations chaining databases, APIs, auth services, and frontends. Dockerfiles offer endless tinkering potential, though that rabbit hole quickly gets deeper and nerdier than anticipated."
+}

@@ -1,0 +1,6 @@
+{
+    "title": "Kubernetes",
+    "icon": "devicon-kubernetes-plain colored",
+    "experience": 20,
+    "overview": "Kubernetes doesn't feel complicated for my current use cases, but I recognize it can get ridiculously sophisticated for large-scale scenarios. Docker Compose already meets my container orchestration needs neatly, leaving Kubernetes as an overly powerful solution eagerly awaiting a bigger, messier project to justify its existence."
+  }
