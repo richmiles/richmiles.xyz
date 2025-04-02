@@ -25,12 +25,24 @@
     100% { transform: rotate(360deg); }
 }
 
-/* Skills Grid */
+/* Skills Grid - Centered horizontally but remains below categories */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Increased min width to prevent shrinkage */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 25px;
     margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Center grid items when they don't fill the row completely */
+@media (min-width: 768px) {
+    .skills-grid {
+        justify-content: center;
+        grid-template-columns: repeat(auto-fit, 150px);
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* Skills Card */

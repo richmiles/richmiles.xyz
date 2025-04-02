@@ -17,12 +17,13 @@ async function loadCategoryData(categoryKey) {
   }
   
   try {
-    const response = await fetch(`js/categories/${categoryKey}.json`);
+    const response = await fetch(`data/categories/${categoryKey}.json`);
     if (!response.ok) {
       throw new Error(`Failed to load category data for ${categoryKey}`);
     }
     
     const data = await response.json();
+    console.log(`Loaded data for ${categoryKey}:`, data);
     categoryData[categoryKey] = data; // Cache the data
     return data;
   } catch (error) {
@@ -41,7 +42,9 @@ async function loadCategoryTemplate() {
     if (!response.ok) {
       throw new Error('Failed to load category intro template');
     }
-    return await response.text();
+    const template = await response.text();
+    console.log('Category template loaded successfully');
+    return template;
   } catch (error) {
     console.error('Error loading category intro template:', error);
     return null;
@@ -53,6 +56,8 @@ async function loadCategoryTemplate() {
  * This loads the template and data for each category
  */
 async function initializeCategoryIntros() {
+  console.log('Starting category initialization...');
+  
   // Categories to load
   const categories = [
     { key: 'languages', selector: '.category-languages' },
@@ -64,16 +69,31 @@ async function initializeCategoryIntros() {
   
   // Get the template once
   const template = await loadCategoryTemplate();
-  if (!template) return;
+  if (!template) {
+    console.error('Failed to load template, aborting category initialization');
+    return;
+  }
+  
+  console.log('Template loaded, processing categories...');
   
   // Load each category
   for (const category of categories) {
+    console.log(`Processing category: ${category.key}`);
     const categorySection = document.querySelector(category.selector);
-    if (!categorySection) continue;
+    
+    if (!categorySection) {
+      console.warn(`Category section not found for selector: ${category.selector}`);
+      continue;
+    }
     
     // Load category data
     const data = await loadCategoryData(category.key);
-    if (!data) continue;
+    if (!data) {
+      console.warn(`No data loaded for category: ${category.key}`);
+      continue;
+    }
+    
+    console.log(`Creating card for ${category.key} with title: ${data.title}`);
     
     // Create a temporary container to hold the template
     const tempContainer = document.createElement('div');
@@ -84,36 +104,42 @@ async function initializeCategoryIntros() {
     introCard.querySelector('#category-icon').className = data.icon;
     introCard.querySelector('#category-title').textContent = data.title;
     introCard.querySelector('#category-summary').textContent = data.summary;
-    introCard.querySelector('#category-content').innerHTML = data.content;
+    
+    // Handle content - this appears to be missing in the data, so check if it exists
+    const contentElement = introCard.querySelector('#category-content');
+    if (contentElement) {
+      if (data.content) {
+        contentElement.innerHTML = data.content;
+      } else {
+        // If no content exists in the data, remove the expanded area entirely
+        const expandedArea = introCard.querySelector('.intro-card-expanded');
+        if (expandedArea) {
+          expandedArea.remove();
+        }
+      }
+    }
     
     // Remove the ID attributes to avoid duplicates
     introCard.querySelector('#category-icon').removeAttribute('id');
     introCard.querySelector('#category-title').removeAttribute('id');
     introCard.querySelector('#category-summary').removeAttribute('id');
-    introCard.querySelector('#category-content').removeAttribute('id');
+    const contentEl = introCard.querySelector('#category-content');
+    if (contentEl) contentEl.removeAttribute('id');
     
-    // Insert the card at the top of the category section, after the h3
-    const h3 = categorySection.querySelector('h3');
-    if (h3) {
-      h3.after(introCard);
+    // Insert the card at the beginning of the category section
+    // This is important: we're now putting it at the beginning, not after an h3
+    const firstChild = categorySection.firstChild;
+    if (firstChild) {
+      categorySection.insertBefore(introCard, firstChild);
     } else {
-      categorySection.prepend(introCard);
+      categorySection.appendChild(introCard);
     }
+    
+    console.log(`Category card for ${category.key} inserted successfully`);
   }
   
-  // Add event listeners to the toggle buttons
-  document.querySelectorAll('.intro-card-toggle').forEach(button => {
-    button.addEventListener('click', function() {
-      const expandedContent = this.nextElementSibling;
-      if (expandedContent.classList.contains('active')) {
-        expandedContent.classList.remove('active');
-        this.textContent = 'Read More';
-      } else {
-        expandedContent.classList.add('active');
-        this.textContent = 'Read Less';
-      }
-    });
-  });
-  
-  console.log('Category intros initialized successfully');
+  console.log('Category intros initialization completed');
 }
+
+// Export the initialization function explicitly
+window.initializeCategoryIntros = initializeCategoryIntros;
