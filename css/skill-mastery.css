@@ -83,28 +83,6 @@
   animation-delay: 0.4s;
 }
 
-/* Mastery level text that appears on hover */
-.mastery-level-text {
-  position: absolute;
-  bottom: -24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(42, 122, 140, 0.9);
-  color: white;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 0.7rem;
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  white-space: nowrap;
-  z-index: 10;
-}
-
-.skill-icon-item:hover .mastery-level-text {
-  opacity: 1;
-}
-
 /* Fix for FontAwesome icons */
 .skill-mastery-container .fa-solid.fa-brain {
   color: var(--primary);
