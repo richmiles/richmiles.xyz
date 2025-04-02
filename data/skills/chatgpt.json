@@ -1,0 +1,6 @@
+{
+  "title": "ChatGPT",
+  "icon": "img/chatgpt.svg",
+  "experience": 100,
+  "overview": "Initially, ChatGPT was more toy than tool for me, just another curiosity to tinker with. But when it helped me recreate Python's Fernet encryption in TypeScript, my perspective shifted dramatically. The project was a two-day marathon of debugging prompts and parsing eccentric AI outputs, but the experience cemented ChatGPT as a surprisingly capable partner for creative problem-solving, proving there really was substance behind the AI buzz. I'm never looking back."
+}

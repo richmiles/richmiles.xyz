@@ -1,0 +1,6 @@
+{
+  "title": "Claude",
+  "icon": "img/claude.svg",
+  "experience": 100,
+  "overview": "Claude rapidly became my coding partner, largely thanks to its artifacts feature, which, is so good it almost feels unfair. However, Claude often has the frustrating habit of interpreting every request as a complex coding challenge. When I ask for a grocery list, I don't need an interactive React snippet. It's both indispensable and maddening."
+}

@@ -1,0 +1,6 @@
+  {
+    "title": "SQLAlchemy",
+    "icon": "devicon-sqlalchemy-plain",
+    "experience": 40,
+    "overview": "SQLAlchemy entered my workflow alongside LLM-based projects, quickly reminding me of Entity Framework's code-first migrations (especially with Alembic). While the Pythonic ORM approach is powerful, I still haven't fully internalized its nuances—I often find myself leaning heavily on documentation."
+  }

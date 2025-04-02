@@ -1,0 +1,6 @@
+{
+    "title": "Python",
+    "icon": "devicon-python-plain colored",
+    "experience": 70,
+    "overview": "Python crept into my toolkit as a Matlab replacement for data analysis, but lately, it's been my go-to for backend APIs, rapid scripts, and wrangling chatty AI models. While its loosely-enforced types often feel like coding with bumpers in a bowling alley, Python's straightforward syntax and native JSON affinity make it indispensable, particularly when hooking into services like OpenAI."
+  }

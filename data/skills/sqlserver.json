@@ -1,0 +1,6 @@
+{
+  "title": "SQL Server",
+  "icon": "devicon-microsoftsqlserver-plain colored",
+  "experience": 85,
+  "overview": "SQL Server is where I truly learned database fundamentals, spending countless hours optimizing queries and writing stored procedures. Its mature tooling, especially SQL Server Data Tools, simplified database schema management and deployment. After wrestling with synchronization issues from auto-increment integers in remote offline scenarios, I embraced UUIDs despite their quirks. SQL Server remains my benchmark for stability and predictability."
+}
