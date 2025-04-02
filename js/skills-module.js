@@ -5,6 +5,7 @@ const SkillsModule = {
     skillsOverview: {},    // For lightweight overview data
     modalInitialized: false,
     modalTemplateLoaded: false,
+    observerInstance: null,  // To store the intersection observer instance
 
     // Initialization
     init: async function () {
@@ -26,6 +27,9 @@ const SkillsModule = {
 
         // Initialize skill mastery indicators
         this.initSkillMasteryIndicators();
+        
+        // Initialize Intersection Observer for animations
+        this.initIntersectionObserver();
 
         console.log('Skills Module initialized successfully');
     },
@@ -55,6 +59,45 @@ const SkillsModule = {
             console.error('Error loading skills overview:', error);
             return false;
         }
+    },
+
+    // Initialize Intersection Observer for skill animations
+    initIntersectionObserver: function() {
+        console.log('Setting up Intersection Observer for skill animations');
+        
+        // If there's an existing observer, disconnect it
+        if (this.observerInstance) {
+            this.observerInstance.disconnect();
+        }
+        
+        // Create a new observer instance
+        this.observerInstance = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // When the skill item is visible, animate its bars
+                    const skillItem = entry.target;
+                    const masteryBars = skillItem.querySelector('.skill-mastery-bars');
+                    
+                    if (masteryBars && !masteryBars.classList.contains('animate')) {
+                        console.log('Animating bars for visible skill', skillItem.getAttribute('data-skill'));
+                        masteryBars.classList.add('animate');
+                        
+                        // Stop observing this element after animation
+                        this.observerInstance.unobserve(skillItem);
+                    }
+                }
+            });
+        }, {
+            root: null, // Use the viewport
+            rootMargin: '0px',
+            threshold: 0.2 // Trigger when at least 20% of the element is visible
+        });
+        
+        // Start observing all skill items
+        const skillItems = document.querySelectorAll('.skill-icon-item');
+        skillItems.forEach(item => {
+            this.observerInstance.observe(item);
+        });
     },
 
     // Initialize skill mastery indicators for all skills
@@ -93,7 +136,7 @@ const SkillsModule = {
         console.log(`Added mastery indicators to ${updatedCount} skills`);
     },
 
-    // Create mastery indicator for a skill
+    // Create mastery indicator for a skill (updated to work with Intersection Observer)
     createMasteryIndicator: function (skillItem, iconElement, skillData) {
         const experience = skillData.experience || 0;
         const parentNode = iconElement.parentNode;
@@ -109,6 +152,7 @@ const SkillsModule = {
         // Create mastery bars
         const masteryBars = document.createElement('div');
         masteryBars.className = 'skill-mastery-bars';
+        // Note: We don't add 'animate' class here anymore - Intersection Observer will add it
 
         // Add 5 bars (filled based on experience)
         for (let i = 1; i <= 5; i++) {
@@ -124,16 +168,11 @@ const SkillsModule = {
             masteryBars.appendChild(bar);
         }
 
-        // Add bars to container (THIS LINE WAS IN THE WRONG PLACE BEFORE)
+        // Add bars to container
         masteryContainer.appendChild(masteryBars);
 
         // Replace the original icon with the mastery container
         parentNode.replaceChild(masteryContainer, iconElement);
-
-        // Add animation class after a short delay
-        setTimeout(() => {
-            masteryBars.classList.add('animate');
-        }, 100);
     },
 
     // Ensure the modal container exists
@@ -266,6 +305,12 @@ const SkillsModule = {
             // Mark as having a listener attached
             item.setAttribute('data-listener', 'true');
             handlerCount++;
+            
+            // Make sure this item is being observed for animation
+            if (this.observerInstance && !item.classList.contains('observed')) {
+                this.observerInstance.observe(item);
+                item.classList.add('observed');
+            }
         });
 
         if (handlerCount > 0) {
@@ -416,6 +461,7 @@ function initializeSkillsModule() {
         console.log('Skills module already initialized, only updating event handlers');
         SkillsModule.initSkillEvents();
         SkillsModule.initSkillMasteryIndicators();
+        SkillsModule.initIntersectionObserver(); // Re-initialize observer for any new elements
         return;
     }
 
@@ -468,6 +514,7 @@ document.addEventListener('contentLoaded', () => {
     console.log('contentLoaded event received, re-initializing skill events...');
     SkillsModule.initSkillEvents();
     SkillsModule.initSkillMasteryIndicators();
+    SkillsModule.initIntersectionObserver(); // Re-initialize observer for new elements
 });
 
 // Expose the module globally
