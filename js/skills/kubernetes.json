@@ -1,6 +1,6 @@
 {
-    "title": "Kubernetes",
-    "icon": "devicon-kubernetes-plain colored",
-    "experience": 20,
-    "overview": "Kubernetes doesn't feel complicated for my current use cases, but I recognize it can get ridiculously sophisticated for large-scale scenarios. Docker Compose already meets my container orchestration needs neatly, leaving Kubernetes as an overly powerful solution eagerly awaiting a bigger, messier project to justify its existence."
+    "title": "Swift",
+    "icon": "devicon-swift-plain colored",
+    "experience": 50,
+    "overview": "Swift emerged as my savior from the chaos of cross-platform frameworks (.NET MAUI, Flutter, Expo), which always promised universality but as soon as something mildly complex came up, the wheels came off. Swift's simplicity and polished UI previews were a breath of fresh air after battling tangled build systems and quirky UI glitches. Sure, I'll grudgingly write apps twice (once for iOS and again for Android), but that's a small price to pay. However, Xcode? It can burn in a fire."
   }

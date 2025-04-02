@@ -24,20 +24,12 @@
 }
 
 .skill-mastery-container img {
-  max-width: 38px;
-  max-height: 38px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  width: 38px;
+  height: 38px;
 }
 
 .skill-mastery-container i {
   font-size: 2.2rem;
-}
-
-.skill-mastery-container .custom-icon {
-  width: 36px;
-  height: 36px;
 }
 
 /* Vertical bars mastery indicator */
@@ -111,14 +103,6 @@
 
 .skill-icon-item:hover .mastery-level-text {
   opacity: 1;
-}
-
-/* Specific icon type adjustments */
-.skill-icon-item[data-skill="python"] .skill-mastery-container img,
-.skill-icon-item[data-skill="typescript"] .skill-mastery-container img,
-.skill-icon-item[data-skill="csharp"] .skill-mastery-container img {
-  max-width: 36px;
-  max-height: 36px;
 }
 
 /* Fix for FontAwesome icons */
