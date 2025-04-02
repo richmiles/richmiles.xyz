@@ -31,7 +31,7 @@ a {
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -145,13 +145,22 @@ nav {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 80px 0;
+  padding: 20px 0;
   background-color: var(--white);
 }
 
 .hero h2 {
   font-size: 2.2rem;
+  margin-bottom: 0px;
+  color: var(--primary);
+}
+
+.hero h3 {
+  font-size: 1.8rem;
+  margin-top: -10px;
   margin-bottom: 20px;
+  opacity: 0.3;
+  font-style: italic;
   color: var(--primary);
 }
 
@@ -180,7 +189,7 @@ nav {
 
 /* Experience Timeline */
 .experience {
-  padding: 80px 0;
+  padding: 20px 0;
   background-color: var(--background);
 }
 
@@ -269,13 +278,13 @@ nav {
 
 /* Skills Section */
 .skills {
-  padding: 80px 0;
+  padding: 20px 0;
   background-color: var(--white);
 }
 
 /* Projects Section */
 .projects {
-  padding: 80px 0;
+  padding: 20px 0;
   background-color: var(--background);
 }
 
@@ -351,7 +360,7 @@ nav {
 
 /* Contact Section */
 .contact {
-  padding: 80px 0;
+  padding: 20px 0;
   background-color: var(--white);
   text-align: center;
 }
@@ -372,17 +381,19 @@ nav {
 .skill-tag {
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 5px 10px;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--white);
   border-radius: 30px;
   font-weight: 500;
   transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 0.9rem;
   box-shadow: 0 4px 15px rgba(42, 122, 140, 0.3);
 }
 
 .skill-tag i {
-  margin-right: 8px;
+  margin-right: 4px;
+  margin-top: 3px;
 }
 
 .skill-tag:hover {
@@ -496,15 +507,15 @@ footer {
   .projects-grid {
     grid-template-columns: 1fr;
   }
+
+  .hero h2 {
+    font-size: 2.1rem;
+  }
 }
 
 @media (max-width: 480px) {
   .profile-info h1 {
     font-size: 2rem;
-  }
-
-  .hero h2 {
-    font-size: 1.8rem;
   }
 
   .section-title {
