@@ -53,12 +53,16 @@
     justify-content: flex-start;
     min-height: 180px;         /* Ensures a consistent minimum height */
     padding: 20px 10px;
+    border: 0;
     border-radius: 8px;
     background-color: white;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
     padding-top: 30px;         /* Space for any mastery indicator */
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
 }
 
 .skill-icon-item:hover {

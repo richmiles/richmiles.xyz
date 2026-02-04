@@ -1,11 +1,11 @@
 :8000 {
-  root * /srv
-  file_server
-
   @health path /healthz
   respond @health 200
 
   @api_health path /api/v1/healthz
   respond @api_health 200
-}
 
+  root * /srv
+  try_files {path} {path}/ /index.html
+  file_server
+}

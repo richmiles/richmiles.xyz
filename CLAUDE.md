@@ -1,6 +1,6 @@
 # CLAUDE.md - richmiles.xyz Notes
 
-Static resume site deployed as a small Caddy container (no FastAPI, no database).
+Vite + React + TypeScript resume site deployed as a small Caddy container (no FastAPI, no database).
 
 ## Fleet contract (Spark Swarm standard)
 
@@ -13,8 +13,8 @@ Static resume site deployed as a small Caddy container (no FastAPI, no database)
 ## Local dev
 
 ```bash
+make install
 make dev
 ```
 
 Then open `http://127.0.0.1:8000`.
-

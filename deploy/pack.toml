@@ -27,6 +27,13 @@ host = "{ephem_host}"
 path_prefix = "/"
 to = "app:8000"
 
+[database]
+# Note: this service does not use a database, but the current Spark Swarm
+# ephemeral staging runner requires a database.kind. SQLite is the lightest
+# option and does not provision an additional service.
+kind = "sqlite"
+url = "sqlite:///./data/app.db"
+
 [secrets]
 source = "sparkswarm"
 project = "richmiles-xyz"
@@ -58,4 +65,3 @@ type = "http"
 name = "home-loads"
 url = "http://{ephem_host}/"
 expect_status = 200
-
