@@ -1,6 +1,6 @@
 # AGENTS.md - Instructions for coding agents (richmiles.xyz)
 
-This repo is a static resume site (no backend, no database).
+This repo is a Vite + React + TypeScript resume site (no backend, no database). The built SPA is served by Caddy inside the container.
 
 ## Fleet contract (Spark Swarm standard)
 
@@ -25,7 +25,7 @@ Health is served at the webserver layer (Caddy inside the container):
 - Secrets: none required
 
 ## Commands (prefer Make)
+- Install deps: `make install`
 - Dev (local): `make dev` (serves on http://127.0.0.1:8000)
-- Checks: `make check`
+- Checks (contract): `make check`
 - Build image: `make docker-build`
-
