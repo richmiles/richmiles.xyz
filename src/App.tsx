@@ -103,10 +103,11 @@ export default function App() {
           <h2>Innovation at the Edge</h2>
           <h3>(of sanity)</h3>
           <p>
-            Building software that bends rules, challenges APIs, and occasionally offends best practices. With 20+ years
-            dancing between startups, I&apos;ve learned that innovation thrives on discomfort. Currently weaponizing
-            AI—turning buzzwords like LLM into tools that actually solve problems, automate drudgery, and occasionally
-            make me question my career choices. Based in Laramie, Wyoming, because cutting-edge chaos deserves a scenic
+            Building software that bends rules, challenges APIs, and occasionally offends best
+            practices. With 20+ years dancing between startups, I&apos;ve learned that innovation
+            thrives on discomfort. Currently weaponizing AI—turning buzzwords like LLM into tools
+            that actually solve problems, automate drudgery, and occasionally make me question my
+            career choices. Based in Laramie, Wyoming, because cutting-edge chaos deserves a scenic
             backdrop.
           </p>
           <a
@@ -135,9 +136,9 @@ export default function App() {
                 <h3 className="timeline-title">Founder &amp; Lead Developer</h3>
                 <h4 className="timeline-company">Miles Automation</h4>
                 <p>
-                  Architecting a scalable LLM platform leveraging multiple models (ChatGPT, Claude, Gemini) to automate
-                  knowledge management and task execution. Developing tools for rich LLM context and semantic search
-                  capabilities.
+                  Architecting a scalable LLM platform leveraging multiple models (ChatGPT, Claude,
+                  Gemini) to automate knowledge management and task execution. Developing tools for
+                  rich LLM context and semantic search capabilities.
                 </p>
               </div>
             </div>
@@ -149,8 +150,9 @@ export default function App() {
                 <h3 className="timeline-title">Game Developer</h3>
                 <h4 className="timeline-company">Edventure Studios</h4>
                 <p>
-                  Built Edventure Trek, an educational game using Unity/C#/SQLite on the frontend and Python/FastAPI/
-                  MySQL on the backend. Launched a successful Kickstarter campaign that validated core concepts.
+                  Built Edventure Trek, an educational game using Unity/C#/SQLite on the frontend
+                  and Python/FastAPI/ MySQL on the backend. Launched a successful Kickstarter
+                  campaign that validated core concepts.
                 </p>
               </div>
             </div>
@@ -162,9 +164,9 @@ export default function App() {
                 <h3 className="timeline-title">CTO &amp; Backend Developer</h3>
                 <h4 className="timeline-company">Neowire</h4>
                 <p>
-                  Built a full Azure CI/CD pipeline using Azure DevOps with blue/green deployments. Scaled operations to
-                  250,000+ users in European markets while ensuring high availability and managing diverse data
-                  regulations.
+                  Built a full Azure CI/CD pipeline using Azure DevOps with blue/green deployments.
+                  Scaled operations to 250,000+ users in European markets while ensuring high
+                  availability and managing diverse data regulations.
                 </p>
               </div>
             </div>
@@ -176,9 +178,9 @@ export default function App() {
                 <h3 className="timeline-title">Lead Software Developer</h3>
                 <h4 className="timeline-company">Propel Labs</h4>
                 <p>
-                  Engineered a next-generation flow cytometry platform in C#/WPF, capable of real-time analysis of up to
-                  100,000 events/sec. Pioneered automated drop delay calibration, replacing manual steps with a patented
-                  system.
+                  Engineered a next-generation flow cytometry platform in C#/WPF, capable of
+                  real-time analysis of up to 100,000 events/sec. Pioneered automated drop delay
+                  calibration, replacing manual steps with a patented system.
                 </p>
               </div>
             </div>
@@ -200,12 +202,13 @@ export default function App() {
               <div className="project-content">
                 <h3 className="project-title">Spark Swarm</h3>
                 <p>
-                  Spark Swarm is your AI-powered cofounder, built specifically for solopreneurs tired of drowning in
-                  half-finished projects. It ruthlessly prioritizes your endless stream of ideas, quickly tests which
-                  ones are worth your time, and even handles the grunt work of coding, marketing, and early-stage
-                  support. By harnessing the power of ChatGPT, Claude, and a dash of entrepreneurial cynicism, Spark
-                  Swarm makes sure your brilliant ideas actually see the light of day, and turn a profit while
-                  they&apos;re at it.
+                  Spark Swarm is your AI-powered cofounder, built specifically for solopreneurs
+                  tired of drowning in half-finished projects. It ruthlessly prioritizes your
+                  endless stream of ideas, quickly tests which ones are worth your time, and even
+                  handles the grunt work of coding, marketing, and early-stage support. By
+                  harnessing the power of ChatGPT, Claude, and a dash of entrepreneurial cynicism,
+                  Spark Swarm makes sure your brilliant ideas actually see the light of day, and
+                  turn a profit while they&apos;re at it.
                 </p>
                 <div className="project-tags">
                   <span className="project-tag">Python</span>
@@ -223,12 +226,13 @@ export default function App() {
               <div className="project-content">
                 <h3 className="project-title">Edventure Trek</h3>
                 <p>
-                  Edventure Trek is an educational scavenger hunt game that transforms learning into hands-on
-                  adventures. It encourages users to explore the world through interactive markers that cover nature,
-                  culture, science, and practical skills. Participants record observations via photos, videos, sketches,
-                  and more, earning achievements while collaborating socially. With real-time updates, community-created
-                  content, and gamified challenges, Edventure Trek makes education engaging, social, and endlessly
-                  customizable.
+                  Edventure Trek is an educational scavenger hunt game that transforms learning into
+                  hands-on adventures. It encourages users to explore the world through interactive
+                  markers that cover nature, culture, science, and practical skills. Participants
+                  record observations via photos, videos, sketches, and more, earning achievements
+                  while collaborating socially. With real-time updates, community-created content,
+                  and gamified challenges, Edventure Trek makes education engaging, social, and
+                  endlessly customizable.
                 </p>
                 <div className="project-tags">
                   <span className="project-tag">Swift</span>
@@ -245,12 +249,14 @@ export default function App() {
               <div className="project-content">
                 <h3 className="project-title">Code Loom</h3>
                 <p>
-                  Code Loom is a context management tool designed for developers who want to tame the chaos of large
-                  codebases. It collects and organizes relevant snippets and file structures, packaging them neatly for
-                  interaction with large language models (LLMs) like Claude and ChatGPT. Whether you&apos;re debugging
-                  tricky functions, writing detailed documentation, or rapidly prototyping, Code Loom streamlines your
-                  workflow by delivering precise context exactly when and how you need it. Think of it as your personal
-                  coding assistant that remembers everything so you don’t have to.
+                  Code Loom is a context management tool designed for developers who want to tame
+                  the chaos of large codebases. It collects and organizes relevant snippets and file
+                  structures, packaging them neatly for interaction with large language models
+                  (LLMs) like Claude and ChatGPT. Whether you&apos;re debugging tricky functions,
+                  writing detailed documentation, or rapidly prototyping, Code Loom streamlines your
+                  workflow by delivering precise context exactly when and how you need it. Think of
+                  it as your personal coding assistant that remembers everything so you don’t have
+                  to.
                 </p>
                 <div className="project-tags">
                   <span className="project-tag">TypeScript</span>
@@ -273,10 +279,20 @@ export default function App() {
               <a href="mailto:me@richmiles.xyz" className="skill-tag">
                 <i className="fa-solid fa-envelope"></i> me@richmiles.xyz
               </a>
-              <a href="https://linkedin.com/in/r-miles" target="_blank" rel="noreferrer" className="skill-tag">
+              <a
+                href="https://linkedin.com/in/r-miles"
+                target="_blank"
+                rel="noreferrer"
+                className="skill-tag"
+              >
                 <i className="fa-brands fa-linkedin"></i> LinkedIn
               </a>
-              <a href="https://github.com/richmiles" target="_blank" rel="noreferrer" className="skill-tag">
+              <a
+                href="https://github.com/richmiles"
+                target="_blank"
+                rel="noreferrer"
+                className="skill-tag"
+              >
                 <i className="fa-brands fa-github"></i> GitHub
               </a>
             </div>

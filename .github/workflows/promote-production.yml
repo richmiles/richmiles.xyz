@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: "Git ref to deploy (branch, tag, or SHA)"
+        description: 'Git ref to deploy (branch, tag, or SHA)'
         required: true
-        default: "main"
+        default: 'main'
 
 permissions:
   contents: read
@@ -64,7 +64,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
       - name: Write prod SSH key
         shell: bash
@@ -98,4 +98,3 @@ jobs:
           name: prod-deploy-summary
           path: prod-deploy-summary.json
           retention-days: 30
-

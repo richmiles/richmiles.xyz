@@ -63,13 +63,7 @@ function CategoryIntroCard({ data }: { data: CategoryData }) {
   )
 }
 
-function SkillsModal({
-  skill,
-  onClose,
-}: {
-  skill: SkillDetail
-  onClose: () => void
-}) {
+function SkillsModal({ skill, onClose }: { skill: SkillDetail; onClose: () => void }) {
   return (
     <div
       className="skills-modal"
@@ -117,10 +111,26 @@ export default function SkillsSection() {
         key: 'ai',
         containerClass: 'category-ai',
         skills: [
-          { id: 'chatgpt', name: 'ChatGPT', icon: { kind: 'img', src: '/img/chatgpt.svg', alt: 'ChatGPT' } },
-          { id: 'claude', name: 'Claude', icon: { kind: 'img', src: '/img/claude.svg', alt: 'Claude' } },
-          { id: 'gemini', name: 'Gemini', icon: { kind: 'img', src: '/img/gemini.svg', alt: 'Gemini' } },
-          { id: 'deepseek', name: 'DeepSeek', icon: { kind: 'img', src: '/img/deepseek.svg', alt: 'DeepSeek' } },
+          {
+            id: 'chatgpt',
+            name: 'ChatGPT',
+            icon: { kind: 'img', src: '/img/chatgpt.svg', alt: 'ChatGPT' },
+          },
+          {
+            id: 'claude',
+            name: 'Claude',
+            icon: { kind: 'img', src: '/img/claude.svg', alt: 'Claude' },
+          },
+          {
+            id: 'gemini',
+            name: 'Gemini',
+            icon: { kind: 'img', src: '/img/gemini.svg', alt: 'Gemini' },
+          },
+          {
+            id: 'deepseek',
+            name: 'DeepSeek',
+            icon: { kind: 'img', src: '/img/deepseek.svg', alt: 'DeepSeek' },
+          },
           { id: 'llama', name: 'Llama', icon: { kind: 'img', src: '/img/meta.svg', alt: 'Llama' } },
         ],
       },
@@ -155,8 +165,16 @@ export default function SkillsSection() {
               alt: 'C#',
             },
           },
-          { id: 'swift', name: 'Swift', icon: { kind: 'i', className: 'devicon-swift-plain colored', ariaLabel: 'Swift' } },
-          { id: 'rust', name: 'Rust', icon: { kind: 'i', className: 'devicon-rust-original', ariaLabel: 'Rust' } },
+          {
+            id: 'swift',
+            name: 'Swift',
+            icon: { kind: 'i', className: 'devicon-swift-plain colored', ariaLabel: 'Swift' },
+          },
+          {
+            id: 'rust',
+            name: 'Rust',
+            icon: { kind: 'i', className: 'devicon-rust-original', ariaLabel: 'Rust' },
+          },
         ],
       },
       {
@@ -166,12 +184,20 @@ export default function SkillsSection() {
           {
             id: 'postgresql',
             name: 'PostgreSQL',
-            icon: { kind: 'i', className: 'devicon-postgresql-plain colored', ariaLabel: 'PostgreSQL' },
+            icon: {
+              kind: 'i',
+              className: 'devicon-postgresql-plain colored',
+              ariaLabel: 'PostgreSQL',
+            },
           },
           {
             id: 'sqlserver',
             name: 'SQL Server',
-            icon: { kind: 'i', className: 'devicon-microsoftsqlserver-plain colored', ariaLabel: 'SQL Server' },
+            icon: {
+              kind: 'i',
+              className: 'devicon-microsoftsqlserver-plain colored',
+              ariaLabel: 'SQL Server',
+            },
           },
           {
             id: 'azuresql',
@@ -185,31 +211,59 @@ export default function SkillsSection() {
           {
             id: 'sqlite',
             name: 'SQLite',
-            icon: { kind: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg', alt: 'SQLite' },
+            icon: {
+              kind: 'img',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg',
+              alt: 'SQLite',
+            },
           },
-          { id: 'mysql', name: 'MySQL', icon: { kind: 'i', className: 'devicon-mysql-plain colored', ariaLabel: 'MySQL' } },
+          {
+            id: 'mysql',
+            name: 'MySQL',
+            icon: { kind: 'i', className: 'devicon-mysql-plain colored', ariaLabel: 'MySQL' },
+          },
         ],
       },
       {
         key: 'frameworks',
         containerClass: 'category-frameworks',
         skills: [
-          { id: 'fastapi', name: 'FastAPI', icon: { kind: 'i', className: 'devicon-fastapi-plain colored', ariaLabel: 'FastAPI' } },
-          { id: 'react', name: 'React', icon: { kind: 'i', className: 'devicon-react-original colored', ariaLabel: 'React' } },
+          {
+            id: 'fastapi',
+            name: 'FastAPI',
+            icon: { kind: 'i', className: 'devicon-fastapi-plain colored', ariaLabel: 'FastAPI' },
+          },
+          {
+            id: 'react',
+            name: 'React',
+            icon: { kind: 'i', className: 'devicon-react-original colored', ariaLabel: 'React' },
+          },
           {
             id: 'vite',
             name: 'Vite',
-            icon: { kind: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg', alt: 'Vite' },
+            icon: {
+              kind: 'img',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg',
+              alt: 'Vite',
+            },
           },
           {
             id: 'sqlalchemy',
             name: 'SQLAlchemy',
-            icon: { kind: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlalchemy/sqlalchemy-original.svg', alt: 'SQLAlchemy' },
+            icon: {
+              kind: 'img',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlalchemy/sqlalchemy-original.svg',
+              alt: 'SQLAlchemy',
+            },
           },
           {
             id: 'entityframeworkcore',
             name: 'Entity Framework',
-            icon: { kind: 'i', className: 'devicon-dotnetcore-plain colored', ariaLabel: 'Entity Framework' },
+            icon: {
+              kind: 'i',
+              className: 'devicon-dotnetcore-plain colored',
+              ariaLabel: 'Entity Framework',
+            },
           },
         ],
       },
@@ -220,23 +274,47 @@ export default function SkillsSection() {
           {
             id: 'githubactions',
             name: 'GitHub Actions',
-            icon: { kind: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg', alt: 'GitHub Actions' },
+            icon: {
+              kind: 'img',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg',
+              alt: 'GitHub Actions',
+            },
           },
           {
             id: 'azuredevops',
             name: 'Azure DevOps',
-            icon: { kind: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuredevops/azuredevops-original.svg', alt: 'Azure DevOps' },
+            icon: {
+              kind: 'img',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuredevops/azuredevops-original.svg',
+              alt: 'Azure DevOps',
+            },
           },
           {
             id: 'docker',
             name: 'Docker',
-            icon: { kind: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg', alt: 'Docker' },
+            icon: {
+              kind: 'img',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
+              alt: 'Docker',
+            },
           },
-          { id: 'kubernetes', name: 'Kubernetes', icon: { kind: 'i', className: 'devicon-kubernetes-plain colored', ariaLabel: 'Kubernetes' } },
+          {
+            id: 'kubernetes',
+            name: 'Kubernetes',
+            icon: {
+              kind: 'i',
+              className: 'devicon-kubernetes-plain colored',
+              ariaLabel: 'Kubernetes',
+            },
+          },
           {
             id: 'jenkins',
             name: 'Jenkins',
-            icon: { kind: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg', alt: 'Jenkins' },
+            icon: {
+              kind: 'img',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg',
+              alt: 'Jenkins',
+            },
           },
         ],
       },
@@ -244,7 +322,9 @@ export default function SkillsSection() {
     [],
   )
 
-  const [overview, setOverview] = useState<Record<string, { title: string; experience: number }>>({})
+  const [overview, setOverview] = useState<Record<string, { title: string; experience: number }>>(
+    {},
+  )
   const [categoryData, setCategoryData] = useState<Record<CategoryKey, CategoryData | null>>({
     ai: null,
     languages: null,
@@ -390,7 +470,12 @@ export default function SkillsSection() {
               onClick={() => setSelectedSkillId(null)}
             >
               <div className="skills-modal-content" onClick={(e) => e.stopPropagation()}>
-                <button type="button" className="modal-close" onClick={() => setSelectedSkillId(null)} aria-label="Close">
+                <button
+                  type="button"
+                  className="modal-close"
+                  onClick={() => setSelectedSkillId(null)}
+                  aria-label="Close"
+                >
                   &times;
                 </button>
                 <div className="modal-header">

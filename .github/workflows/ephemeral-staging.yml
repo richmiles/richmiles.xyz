@@ -4,15 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: "Git ref to stage (branch, tag, or SHA)"
+        description: 'Git ref to stage (branch, tag, or SHA)'
         required: true
-        default: "main"
+        default: 'main'
       keep:
-        description: "Keep droplet for debugging"
+        description: 'Keep droplet for debugging'
         required: true
         type: choice
-        default: "false"
-        options: ["false", "true"]
+        default: 'false'
+        options: ['false', 'true']
   issue_comment:
     types: [created]
 
@@ -104,7 +104,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
       - name: Stage
         id: stage
