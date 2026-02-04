@@ -2,9 +2,15 @@
 
 This repo participates in the Spark Swarm fleet contract:
 
+## Fleet summary
+
+- Spark key: `richmiles-xyz`
 - Image: `ghcr.io/richmiles/richmiles-xyz-app:<tag>`
-- Service: `richmiles-xyz` (on the shared prod droplet)
-- Health URL: `https://richmiles.xyz/healthz`
+- Compose service: `richmiles-xyz`
+- Prod domains: `https://richmiles.xyz` (www redirects to apex)
+- Health URLs:
+  - `https://richmiles.xyz/healthz`
+  - `https://richmiles.xyz/api/v1/healthz`
 
 ## Ephemeral staging
 
@@ -20,8 +26,15 @@ Workflow: GitHub Action **Ephemeral Staging**.
 Workflow: GitHub Action **Promote to Production**.
 
 - Trigger: workflow dispatch.
-- Behavior: builds and pushes `linux/amd64` image to GHCR as `ghcr.io/<owner>/richmiles-xyz-app:sha-<short>`, then pins `RICHMILES_XYZ_IMAGE_TAG` on the prod droplet and restarts the `richmiles-xyz` service.
+- Behavior: builds and pushes `linux/amd64` image to GHCR as `ghcr.io/<owner>/richmiles-xyz-app:sha-<short>`, then pins `RICHMILES_XYZ_IMAGE_TAG=sha-...` on the prod droplet and restarts the `richmiles-xyz` service.
 - Verification: workflow checks `https://richmiles.xyz/healthz`.
+
+## Platform wiring
+
+Production runs on the shared platform droplet managed by `platform-infra`.
+
+- Service wiring: `platform-infra/docker-compose.yml`
+- Domain routing + TLS: `platform-infra/Caddyfile`
 
 ## Local sanity checks
 
