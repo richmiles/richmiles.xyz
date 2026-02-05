@@ -1,11 +1,15 @@
 :8000 {
-  @health path /healthz
-  respond @health 200
+  handle /healthz {
+    respond "ok" 200
+  }
 
-  @api_health path /api/v1/healthz
-  respond @api_health 200
+  handle /api/v1/healthz {
+    respond "ok" 200
+  }
 
-  root * /srv
-  try_files {path} {path}/ /index.html
-  file_server
+  handle {
+    root * /srv
+    try_files {path} {path}/ /index.html
+    file_server
+  }
 }
