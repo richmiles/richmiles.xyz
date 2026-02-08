@@ -1,5 +1,12 @@
 const experiences = [
   {
+    date: 'May 2025 - Present',
+    title: 'Lead Software Engineer',
+    company: 'Sturdy AI',
+    description:
+      'Building an AI-powered account intelligence platform that unifies CRM data with unstructured customer conversations to generate actionable insights, risk assessments, and account reviews.',
+  },
+  {
     date: 'April 2024 - Present',
     title: 'Founder & Lead Developer',
     company: 'Miles Automation',
