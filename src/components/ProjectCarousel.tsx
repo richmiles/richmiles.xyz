@@ -1,17 +1,50 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { projects } from '../data/projects'
+import { type Project, fetchProjects } from '../data/projects'
 
 const AUTO_INTERVAL_MS = 5000
 const SWIPE_THRESHOLD = 50
 
+function healthColor(health: string): string {
+  switch (health) {
+    case 'healthy':
+      return '#22c55e'
+    case 'needs_love':
+      return '#f59e0b'
+    case 'degraded':
+    case 'down':
+      return '#ef4444'
+    default:
+      return '#94a3b8'
+  }
+}
+
+function formatDeploy(iso: string | null): string {
+  if (!iso) return ''
+  const d = new Date(iso)
+  const now = new Date()
+  const diffMs = now.getTime() - d.getTime()
+  const diffH = Math.floor(diffMs / (1000 * 60 * 60))
+  if (diffH < 1) return 'deployed just now'
+  if (diffH < 24) return `deployed ${diffH}h ago`
+  const diffD = Math.floor(diffH / 24)
+  if (diffD === 1) return 'deployed yesterday'
+  return `deployed ${diffD}d ago`
+}
+
 export default function ProjectCarousel() {
+  const [projects, setProjects] = useState<Project[]>([])
   const [current, setCurrent] = useState(0)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const touchStartRef = useRef<number | null>(null)
   const count = projects.length
 
+  useEffect(() => {
+    fetchProjects().then(setProjects)
+  }, [])
+
   const goTo = useCallback(
     (index: number) => {
+      if (count === 0) return
       setCurrent(((index % count) + count) % count)
     },
     [count],
@@ -21,6 +54,7 @@ export default function ProjectCarousel() {
   const prev = useCallback(() => goTo(current - 1), [current, goTo])
 
   const startAutoPlay = useCallback(() => {
+    if (count === 0) return
     intervalRef.current = setInterval(() => {
       setCurrent((c) => (c + 1) % count)
     }, AUTO_INTERVAL_MS)
@@ -66,6 +100,17 @@ export default function ProjectCarousel() {
     touchStartRef.current = null
   }
 
+  if (projects.length === 0) {
+    return (
+      <section className="projects" id="projects">
+        <div className="container">
+          <h2 className="section-title">Projects</h2>
+          <p style={{ textAlign: 'center', color: 'var(--text-muted)' }}>Loading projects...</p>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="projects" id="projects">
       <div className="container">
@@ -91,12 +136,24 @@ export default function ProjectCarousel() {
                       <img src={project.icon} alt={project.title} className="carousel-card-icon" />
                       <div className="carousel-card-titles">
                         <h3 className="carousel-card-title">{project.title}</h3>
-                        <p className="carousel-card-tagline">{project.tagline}</p>
+                        <div className="carousel-card-meta">
+                          <span
+                            className="health-dot"
+                            style={{ backgroundColor: healthColor(project.health) }}
+                            title={project.health}
+                          />
+                          <span className="carousel-card-stage">{project.stage}</span>
+                          {project.last_deploy_at && (
+                            <span className="carousel-card-deploy">
+                              {formatDeploy(project.last_deploy_at)}
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
-                    {project.url && (
+                    {project.domain && (
                       <a
-                        href={project.url}
+                        href={`https://${project.domain}`}
                         target="_blank"
                         rel="noreferrer"
                         className="carousel-card-visit"
@@ -106,13 +163,6 @@ export default function ProjectCarousel() {
                     )}
                   </div>
                   <p className="carousel-card-description">{project.description}</p>
-                  <div className="carousel-card-tags">
-                    {project.tags.map((tag) => (
-                      <span className="carousel-tag" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               ))}
             </div>
@@ -120,7 +170,7 @@ export default function ProjectCarousel() {
 
           <div className="carousel-controls">
             <button className="carousel-arrow" onClick={prev} aria-label="Previous project">
-              <i className="fa-solid fa-chevron-left"></i>
+              &lsaquo;
             </button>
             <div className="carousel-dots">
               {projects.map((_, i) => (
@@ -137,7 +187,7 @@ export default function ProjectCarousel() {
               ))}
             </div>
             <button className="carousel-arrow" onClick={next} aria-label="Next project">
-              <i className="fa-solid fa-chevron-right"></i>
+              &rsaquo;
             </button>
           </div>
         </div>

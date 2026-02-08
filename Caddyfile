@@ -1,10 +1,11 @@
 :8000 {
   handle /healthz {
-    respond "ok" 200
+    reverse_proxy localhost:8001
   }
 
-  handle /api/v1/healthz {
-    respond "ok" 200
+  # /api/v1/healthz and all API routes proxied to FastAPI
+  handle /api/* {
+    reverse_proxy localhost:8001
   }
 
   handle {
