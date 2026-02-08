@@ -1,6 +1,0 @@
-{
-    "title": "FastAPI",
-    "icon": "devicon-fastapi-plain colored",
-    "experience": 60,
-    "overview": "FastAPI quickly became my go-to for high-performance Python APIs, largely due to its automatic documentation and effortless async support. That said, its dependency injection and magic-like conventions sometimes leave me scratching my head, wondering exactly how it's all wired together."
-  }

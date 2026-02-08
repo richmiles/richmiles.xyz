@@ -1,6 +1,0 @@
-{
-  "title": "Entity Framework",
-  "icon": "devicon-dotnet-plain colored",
-  "experience": 80,
-  "overview": "Entity Framework feels incredibly intuitive to me. Mapping database records directly to objects just clicks. LINQ is impressive, but I find myself gravitating more toward the fluent API, enjoying its clear, expressive approach. Whether handling migrations or scaffolding, EF remains comfortably familiar territory."
-}

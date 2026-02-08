@@ -1,6 +1,0 @@
-{
-  "title": "MySQL",
-  "icon": "devicon-mysql-plain colored",
-  "experience": 40,
-  "overview": "MySQL was a struggle for me, probably due to my own operational missteps, but mostly because it often felt cumbersome and memory-hungry on my development setup. While it introduced me to JSON columns, which was useful, the overall experience left me frustrated enough to seek alternatives."
-}

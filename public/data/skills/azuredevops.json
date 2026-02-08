@@ -1,6 +1,0 @@
-{
-  "title": "Azure DevOps",
-  "icon": "devicon-azure-plain colored",
-  "experience": 82,
-  "overview": "Azure DevOps pulled me in with its slick Kanban boards, seamless Azure integration, and intuitive pipeline management. My automated pipelines triggered clean deployments upon merges, with manual checks before pushing to staging—just cautious enough to avoid unintended chaos. It's corporate polish done surprisingly right."
-}

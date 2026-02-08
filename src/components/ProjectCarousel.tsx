@@ -1,0 +1,147 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { projects } from '../data/projects'
+
+const AUTO_INTERVAL_MS = 5000
+const SWIPE_THRESHOLD = 50
+
+export default function ProjectCarousel() {
+  const [current, setCurrent] = useState(0)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const touchStartRef = useRef<number | null>(null)
+  const count = projects.length
+
+  const goTo = useCallback(
+    (index: number) => {
+      setCurrent(((index % count) + count) % count)
+    },
+    [count],
+  )
+
+  const next = useCallback(() => goTo(current + 1), [current, goTo])
+  const prev = useCallback(() => goTo(current - 1), [current, goTo])
+
+  const startAutoPlay = useCallback(() => {
+    intervalRef.current = setInterval(() => {
+      setCurrent((c) => (c + 1) % count)
+    }, AUTO_INTERVAL_MS)
+  }, [count])
+
+  const stopAutoPlay = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+      intervalRef.current = null
+    }
+  }, [])
+
+  useEffect(() => {
+    startAutoPlay()
+    return stopAutoPlay
+  }, [startAutoPlay, stopAutoPlay])
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') {
+      prev()
+      stopAutoPlay()
+      startAutoPlay()
+    } else if (e.key === 'ArrowRight') {
+      next()
+      stopAutoPlay()
+      startAutoPlay()
+    }
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartRef.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartRef.current === null) return
+    const dx = e.changedTouches[0].clientX - touchStartRef.current
+    if (Math.abs(dx) > SWIPE_THRESHOLD) {
+      if (dx < 0) next()
+      else prev()
+      stopAutoPlay()
+      startAutoPlay()
+    }
+    touchStartRef.current = null
+  }
+
+  return (
+    <section className="projects" id="projects">
+      <div className="container">
+        <h2 className="section-title">Projects</h2>
+
+        <div
+          className="carousel-wrapper"
+          onMouseEnter={stopAutoPlay}
+          onMouseLeave={startAutoPlay}
+          onKeyDown={handleKeyDown}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          tabIndex={0}
+          role="region"
+          aria-label="Project carousel"
+        >
+          <div className="carousel-viewport">
+            <div className="carousel-track" style={{ transform: `translateX(-${current * 100}%)` }}>
+              {projects.map((project, i) => (
+                <div className={`carousel-card${i === current ? ' active' : ''}`} key={project.id}>
+                  <div className="carousel-card-header">
+                    <div className="carousel-card-header-left">
+                      <img src={project.icon} alt={project.title} className="carousel-card-icon" />
+                      <div className="carousel-card-titles">
+                        <h3 className="carousel-card-title">{project.title}</h3>
+                        <p className="carousel-card-tagline">{project.tagline}</p>
+                      </div>
+                    </div>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="carousel-card-visit"
+                      >
+                        Visit &rarr;
+                      </a>
+                    )}
+                  </div>
+                  <p className="carousel-card-description">{project.description}</p>
+                  <div className="carousel-card-tags">
+                    {project.tags.map((tag) => (
+                      <span className="carousel-tag" key={tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="carousel-controls">
+            <button className="carousel-arrow" onClick={prev} aria-label="Previous project">
+              <i className="fa-solid fa-chevron-left"></i>
+            </button>
+            <div className="carousel-dots">
+              {projects.map((_, i) => (
+                <button
+                  key={i}
+                  className={`carousel-dot${i === current ? ' active' : ''}`}
+                  onClick={() => {
+                    goTo(i)
+                    stopAutoPlay()
+                    startAutoPlay()
+                  }}
+                  aria-label={`Go to project ${i + 1}`}
+                />
+              ))}
+            </div>
+            <button className="carousel-arrow" onClick={next} aria-label="Next project">
+              <i className="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

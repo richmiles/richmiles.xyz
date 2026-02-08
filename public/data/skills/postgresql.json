@@ -1,6 +1,0 @@
-{
-  "title": "PostgreSQL",
-  "icon": "devicon-postgresql-plain colored",
-  "experience": 60,
-  "overview": "I initially adopted PostgreSQL because it felt like the de facto database for startups. Every cool project seemed to use it. I've appreciated PostgreSQL's elegant blending of structured and semi-structured data (it pioneered JSON support), though adjusting from SQL Server meant adapting to some quirky differences in functions and operators. I'm looking at you || (yeah, I know it's standard)."
-}
