@@ -16,7 +16,7 @@ export const projects: Project[] = [
     description:
       'Dashboard for managing projects, secrets, deployments, and fleet health across a multi-service platform.',
     tags: ['Python', 'FastAPI', 'React', 'Docker'],
-    url: 'https://swarm.sparkswarm.com',
+    url: null,
     icon: '/img/spark-swarm.svg',
   },
   {
