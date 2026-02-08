@@ -1,6 +1,0 @@
-{
-    "title": "TypeScript",
-    "icon": "devicon-typescript-plain colored",
-    "experience": 85,
-    "overview": "TypeScript is JavaScript that grew up, moved out, and learned responsibility. It brings structure and sanity to frontend development, catching bugs at compile-time instead of letting them fester until runtime. My work with React, dashboards, and interactive visualizations leverages TypeScript’s robust type system, ensuring I spend less time debugging and more time building."
-  }

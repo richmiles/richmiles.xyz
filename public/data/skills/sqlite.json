@@ -1,6 +1,0 @@
-{
-  "title": "SQLite",
-  "icon": "devicon-sqlite-plain colored",
-  "experience": 60,
-  "overview": "SQLite is the minimalistic database hero, quietly doing its job without demanding attention. My primary experience involved integrating pre-populated SQLite databases via EF Core, replacing messy Excel or CSV workflows with clean, structured simplicity. It's a reliable choice when simplicity trumps scale, perfect for embedded apps or lightweight projects."
-}

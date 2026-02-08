@@ -1,6 +1,0 @@
-{
-  "title": "Docker",
-  "icon": "devicon-docker-plain colored",
-  "experience": 60,
-  "overview": "Docker finally clicked when I needed database servers without the installation trauma. Soon, my innocent experiments spiraled into elaborate docker-compose orchestrations chaining databases, APIs, auth services, and frontends. Dockerfiles offer endless tinkering potential, though that rabbit hole quickly gets deeper and nerdier than anticipated."
-}

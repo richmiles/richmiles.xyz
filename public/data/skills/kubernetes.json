@@ -1,6 +1,0 @@
-{
-  "title": "Kubernetes",
-  "icon": "devicon-kubernetes-plain colored",
-  "experience": 30,
-  "overview": "Kubernetes feels like an answer desperately searching for a question. I've tinkered with it for personal projects, but each time I found myself asking if the complexity was truly justified. For massive enterprise deployments with hundreds of microservices? Absolutely. For my startup's five containers? Docker Compose works just fine, thanks."
-}

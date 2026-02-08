@@ -1,0 +1,183 @@
+/* Project Carousel */
+.carousel-wrapper {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-card {
+  flex: 0 0 100%;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.carousel-card.active {
+  border-color: var(--primary-dim);
+  box-shadow: 0 0 30px var(--glow);
+}
+
+.carousel-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.carousel-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.carousel-card-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.carousel-card-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.carousel-card-tagline {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+.carousel-card-visit {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--primary);
+  transition: color 0.2s;
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+.carousel-card-visit:hover {
+  color: var(--text);
+}
+
+.carousel-card-description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.carousel-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.carousel-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: var(--surface-hover);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* Navigation Controls */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.carousel-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.carousel-arrow:hover {
+  color: var(--primary);
+  border-color: var(--primary-dim);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.carousel-dot.active {
+  background: var(--primary);
+  transform: scale(1.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel-card {
+    padding: 24px;
+  }
+
+  .carousel-card-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-card {
+    padding: 20px;
+  }
+
+  .carousel-card-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .carousel-card-icon {
+    width: 40px;
+    height: 40px;
+  }
+}

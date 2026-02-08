@@ -1,6 +1,0 @@
-{
-  "title": "React",
-  "icon": "devicon-react-original colored",
-  "experience": 82,
-  "overview": "React and I have a complicated relationship. Components make sense and reusable UIs are great, especially with TypeScript. But throw in hooks like useMemo or refs—whatever those actually do—and I'm ready to rethink my career choices. Still, the widespread adoption means endless resources, community support, and ready-to-use libraries, which keeps me reluctantly committed."
-}

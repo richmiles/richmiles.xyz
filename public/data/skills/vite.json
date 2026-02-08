@@ -1,6 +1,0 @@
-  {
-    "title": "Vite",
-    "icon": "devicon-vitejs-plain colored",
-    "experience": 60,
-    "overview": "After enduring the nightmare of ejecting configs from Create React App, switching to Vite was liberating: lightning-fast startup, reliable hot module replacement, and seamless modern JavaScript support. It claims native TypeScript support, and since I haven't had to touch a Babel config yet, I'm cautiously optimistic."
-  }

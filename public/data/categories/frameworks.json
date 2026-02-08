@@ -1,5 +1,0 @@
-{
-  "title": "Frameworks & Libraries",
-  "icon": "fa-solid fa-cubes",
-  "summary": "FastAPI lets me pretend I need performance. React because herd mentality has its perks. Vite exists primarily because Webpack shouldn't. Entity Framework because LINQ makes databases tolerable. SQLAlchemy because Python never got the LINQ memo."
-}
