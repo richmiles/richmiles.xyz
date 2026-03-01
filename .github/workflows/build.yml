@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       runner_target:
-        description: "Runner target for manual runs"
+        description: 'Runner target for manual runs'
         required: true
         type: choice
-        default: "ubuntu-latest"
+        default: 'ubuntu-latest'
         options:
           - self-hosted-canary
           - ubuntu-latest
