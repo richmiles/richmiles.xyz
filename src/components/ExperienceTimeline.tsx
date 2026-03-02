@@ -4,14 +4,14 @@ const experiences = [
     title: 'Lead Software Engineer',
     company: 'Sturdy AI',
     description:
-      'Building an AI-powered account intelligence platform that unifies CRM data with unstructured customer conversations to generate actionable insights, risk assessments, and account reviews.',
+      'Lead engineer on the LLM infrastructure: rebuilt the prompt system, built usage tracking and caps, and migrated chat storage from Redis to Postgres. Built the Custom AI Signals pipeline end-to-end, from classification service and tuning to backpopulation and management UI. 129 MRs shipped in one year across AI infra, data engineering tooling, and reliability.',
   },
   {
     date: 'April 2024 - Present',
     title: 'Founder & Lead Developer',
     company: 'Miles Automation',
     description:
-      'Building a fleet of products on a self-hosted platform\u2014project dashboards, digital vaults, context engines for LLMs, and the infrastructure that keeps them all running.',
+      'Building a fleet of products on a self-hosted platform: project dashboards, digital vaults, context engines for LLMs, and the infrastructure that keeps them all running.',
   },
   {
     date: 'Aug 2023 - April 2024',
