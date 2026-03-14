@@ -14,7 +14,7 @@ Vite + React + TypeScript portfolio site with a FastAPI backend, served by Caddy
 - Health: `GET /healthz` and `GET /api/v1/healthz` (served by FastAPI via Caddy proxy)
 - Ephemeral staging: `deploy/pack.toml` + GitHub Action `Ephemeral Staging` (manual or `/stage`)
 - Production: GitHub Action `Promote to Production` pins `RICHMILES_XYZ_IMAGE_TAG=sha-...` and restarts `richmiles-xyz`
-- Image: `ghcr.io/richmiles/richmiles-xyz-app:sha-<short>`
+- Image: `ghcr.io/miles-automation/richmiles-xyz-app:sha-<short>`
 - Health URL: `https://richmiles.xyz/healthz`
 
 ## Environment variables
