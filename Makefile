@@ -45,7 +45,7 @@ check:
 	@$(MAKE) contract-check
 
 docker-build:
-	@docker build -t ghcr.io/richmiles/richmiles-xyz-app:latest .
+	@docker build -t ghcr.io/miles-automation/richmiles-xyz-app:latest .
 
 docker-run:
-	@docker run --rm -p 8000:8000 ghcr.io/richmiles/richmiles-xyz-app:latest
+	@docker run --rm -p 8000:8000 ghcr.io/miles-automation/richmiles-xyz-app:latest

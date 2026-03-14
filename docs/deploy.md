@@ -5,7 +5,7 @@ This repo participates in the Spark Swarm fleet contract:
 ## Fleet summary
 
 - Spark key: `richmiles-xyz`
-- Image: `ghcr.io/richmiles/richmiles-xyz-app:<tag>`
+- Image: `ghcr.io/miles-automation/richmiles-xyz-app:<tag>`
 - Compose service: `richmiles-xyz`
 - Prod domains: `https://richmiles.xyz` (www redirects to apex)
 - Health URLs:

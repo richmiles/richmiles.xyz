@@ -26,7 +26,7 @@ Health is served by FastAPI, proxied through Caddy:
 
 ### Image + secrets
 
-- Image: `ghcr.io/richmiles/richmiles-xyz-app:<tag>`
+- Image: `ghcr.io/miles-automation/richmiles-xyz-app:<tag>`
 - Secrets: `SPARK_SWARM_API_KEY` (required), `SPARK_SWARM_API_URL` (optional)
 
 ## Commands (prefer Make)

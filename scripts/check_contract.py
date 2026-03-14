@@ -11,7 +11,7 @@ def must(cond: bool, msg: str) -> None:
 
 
 PROJECT = "richmiles-xyz"
-IMAGE = "ghcr.io/richmiles/richmiles-xyz-app"
+IMAGE = "ghcr.io/miles-automation/richmiles-xyz-app"
 
 
 def main() -> None:

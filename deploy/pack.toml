@@ -3,7 +3,7 @@ version = 1
 [project]
 # Must match the key in platform.toml and the Spark Swarm spark slug.
 key = "richmiles-xyz"
-repo = "richmiles/richmiles.xyz"
+repo = "miles-automation/richmiles.xyz"
 
 [staging]
 tier = "ephemeral"
@@ -19,7 +19,7 @@ mode = "sslip"
 
 [[services]]
 name = "app"
-image = "ghcr.io/richmiles/richmiles-xyz-app"
+image = "ghcr.io/miles-automation/richmiles-xyz-app"
 container_port = 8000
 
 [[services.routes]]
