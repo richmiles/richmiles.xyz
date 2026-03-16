@@ -1,15 +1,20 @@
-from __future__ import annotations
-
-import os
 from contextlib import asynccontextmanager
 from typing import Any
 
 import httpx
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 
-SPARK_SWARM_API_URL = os.getenv("SPARK_SWARM_API_URL", "https://swarm.sparkswarm.com/api/v1")
-SPARK_SWARM_API_KEY = os.getenv("SPARK_SWARM_API_KEY", "")
+from backend.config import settings
+from backend.portfolio_content import (
+    DEFAULT_PROJECT_ICON,
+    fallback_projects,
+    load_experience,
+    load_profile,
+    load_project_fallback,
+    load_project_icons,
+)
+from backend.portfolio_schemas import ExperienceListResponse, ProfileResponse, ProjectListResponse, ProjectResponse
 
 _http_client: httpx.AsyncClient | None = None
 
@@ -25,6 +30,47 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    return response
+
+
+def _enrich_live_projects(sparks: list[dict[str, Any]]) -> list[ProjectResponse]:
+    icons = load_project_icons()
+    fallback_by_id = {project.id: project for project in load_project_fallback()}
+    project_order = {project.id: index for index, project in enumerate(load_project_fallback())}
+    projects: list[ProjectResponse] = []
+
+    for spark in sparks:
+        slug = spark.get("slug")
+        if not slug or slug == "richmiles-xyz":
+            continue
+        if spark.get("stage") not in {"live", "building"}:
+            continue
+
+        fallback = fallback_by_id.get(slug)
+        projects.append(
+            ProjectResponse(
+                id=slug,
+                title=spark.get("name") or (fallback.title if fallback else slug),
+                description=spark.get("description") or (fallback.description if fallback else ""),
+                domain=spark.get("domain") or (fallback.domain if fallback else None),
+                stage=spark.get("stage") or (fallback.stage if fallback else "building"),
+                health=spark.get("health") or (fallback.health if fallback else "unknown"),
+                last_deploy_at=spark.get("last_deploy_at"),
+                category=spark.get("category") or (fallback.category if fallback else None),
+                icon=icons.get(slug, fallback.icon if fallback else DEFAULT_PROJECT_ICON),
+            )
+        )
+
+    projects.sort(key=lambda project: (project_order.get(project.id, len(project_order)), project.title.lower()))
+    return projects
+
+
 @app.get("/healthz")
 async def healthz():
     return JSONResponse({"status": "ok"})
@@ -35,43 +81,34 @@ async def api_healthz():
     return JSONResponse({"status": "ok"})
 
 
-@app.get("/api/v1/projects")
+@app.get("/api/v1/profile", response_model=ProfileResponse)
+async def get_profile():
+    return load_profile()
+
+
+@app.get("/api/v1/experience", response_model=ExperienceListResponse)
+async def get_experience():
+    return load_experience()
+
+
+@app.get("/api/v1/projects", response_model=ProjectListResponse)
 async def get_projects():
     """Fetch live sparks from Spark Swarm and return as portfolio projects."""
-    if not SPARK_SWARM_API_KEY:
-        return JSONResponse({"projects": [], "error": "missing api key"}, status_code=503)
+    api_key = settings.spark_swarm_api_key
+    if not api_key:
+        return fallback_projects(warning="Spark Swarm API key is not configured; serving fallback portfolio data.")
 
-    assert _http_client is not None
+    if _http_client is None:
+        raise HTTPException(status_code=503, detail="Service not ready")
+
     try:
         resp = await _http_client.get(
-            f"{SPARK_SWARM_API_URL}/sparks",
-            headers={"X-API-Key": SPARK_SWARM_API_KEY},
+            f"{settings.spark_swarm_api_url}/sparks",
+            headers={"X-API-Key": api_key},
         )
         resp.raise_for_status()
     except httpx.HTTPError:
-        return JSONResponse({"projects": [], "error": "upstream unavailable"}, status_code=502)
+        return fallback_projects(warning="Spark Swarm is unavailable; serving fallback portfolio data.")
 
     sparks = resp.json().get("sparks", [])
-
-    # Only include sparks that are live or building (not idea-stage)
-    active_stages = {"live", "building"}
-    projects: list[dict[str, Any]] = []
-    for spark in sparks:
-        if spark.get("stage") not in active_stages:
-            continue
-        # Skip richmiles.xyz itself
-        if spark.get("slug") == "richmiles-xyz":
-            continue
-
-        projects.append({
-            "id": spark.get("slug", ""),
-            "title": spark.get("name", ""),
-            "description": spark.get("description", ""),
-            "domain": spark.get("domain"),
-            "stage": spark.get("stage"),
-            "health": spark.get("health", "unknown"),
-            "last_deploy_at": spark.get("last_deploy_at"),
-            "category": spark.get("category"),
-        })
-
-    return {"projects": projects}
+    return ProjectListResponse(projects=_enrich_live_projects(sparks), source="live")
