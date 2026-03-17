@@ -6,6 +6,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 
 from backend.config import settings
+from backend.logging_config import configure_logging
 from backend.portfolio_content import (
     DEFAULT_PROJECT_ICON,
     fallback_projects,
@@ -21,6 +22,7 @@ _http_client: httpx.AsyncClient | None = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    configure_logging(settings.environment)
     global _http_client
     _http_client = httpx.AsyncClient(timeout=10)
     yield
