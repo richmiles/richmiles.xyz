@@ -1,6 +1,6 @@
 # AGENTS.md - Instructions for coding agents (richmiles.xyz)
 
-This repo is a Vite + React + TypeScript portfolio site with a FastAPI backend. Caddy serves the built SPA and proxies `/api/*` to uvicorn, all inside a single container.
+This repo is a Vite + React + TypeScript portfolio site with a FastAPI backend. A single uvicorn process serves the API and the built SPA via StaticFiles, all inside a single container.
 
 ## Fleet contract (Spark Swarm standard)
 
@@ -8,10 +8,10 @@ This repo participates in the Spark Swarm fleet standard for staging and product
 
 ### Health (required)
 
-Health is served by FastAPI, proxied through Caddy:
+Health is served by FastAPI directly:
 
 - `GET /healthz` (public)
-- `GET /api/v1/healthz` (verifies proxy routing)
+- `GET /api/v1/healthz` (verifies API routing)
 
 ### Ephemeral staging (required)
 
@@ -20,8 +20,8 @@ Health is served by FastAPI, proxied through Caddy:
 
 ### Production promotion (required)
 
-- GitHub Action: `Promote to Production`
-- Pins: `RICHMILES_XYZ_IMAGE_TAG=sha-...` on the prod droplet and restarts service `richmiles-xyz`
+- Deploy via platform CLI: `./bin/platform prod rollout richmiles-xyz --tag sha-<short> --yes`
+- Pins: `RICHMILES_XYZ_IMAGE_TAG=sha-...` on the prod droplet, pulls, restarts, health-checks
 - Health URL: `https://richmiles.xyz/healthz`
 
 ### Image + secrets
@@ -32,6 +32,6 @@ Health is served by FastAPI, proxied through Caddy:
 ## Commands (prefer Make)
 
 - Install deps: `make install`
-- Dev (local): `make dev` (serves on http://127.0.0.1:8000)
+- Dev (local): `make dev` (frontend on :5173, backend on :8001)
 - Checks (contract): `make check`
 - Build image: `make docker-build`
