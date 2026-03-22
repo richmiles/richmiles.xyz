@@ -1,11 +1,11 @@
-.PHONY: help install dev test test-frontend test-backend lint format format-check typecheck contract-check check docker-build docker-run
+.PHONY: help install dev backend-server frontend-server test test-frontend test-backend lint format format-check typecheck contract-check check docker-build docker-run
 
 help:
 	@echo "richmiles.xyz"
 	@echo ""
 	@echo "Commands:"
 	@echo "  make install         Install dependencies"
-	@echo "  make dev             Run local container on :8000"
+	@echo "  make dev             Run frontend + backend dev servers"
 	@echo "  make test-frontend   Run frontend component tests"
 	@echo "  make test-backend    Run backend API tests"
 	@echo "  make test            Run all tests"
@@ -18,11 +18,17 @@ help:
 	@echo "  make docker-build    Build production image"
 
 install:
-	@npm install
+	cd backend && uv sync
+	npm install
 
 dev:
-	@docker build -t richmiles-xyz:dev .
-	@docker run --rm -p 8000:8000 richmiles-xyz:dev
+	@$(MAKE) -j2 backend-server frontend-server
+
+backend-server:
+	cd backend && uv run uvicorn backend.main:app --reload --host 127.0.0.1 --port 8001
+
+frontend-server:
+	npm run dev -- --port 5173
 
 test:
 	@$(MAKE) test-frontend
@@ -32,8 +38,7 @@ test-frontend:
 	@npm run test
 
 test-backend:
-	@docker build -t richmiles-xyz:test .
-	@docker run --rm --entrypoint python3 richmiles-xyz:test -m unittest discover -s backend/tests -p 'test*.py' -t /app
+	cd backend && uv run pytest tests/ -v
 
 lint:
 	@npm run lint

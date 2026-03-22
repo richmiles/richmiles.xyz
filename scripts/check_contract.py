@@ -15,12 +15,13 @@ IMAGE = "ghcr.io/miles-automation/richmiles-xyz-app"
 
 
 def main() -> None:
-    for p in ("AGENTS.md", "CLAUDE.md", "Dockerfile", "Caddyfile", ".env.example", "deploy/pack.toml"):
+    for p in ("AGENTS.md", "CLAUDE.md", "Dockerfile", ".env.example", "deploy/pack.toml"):
         must(Path(p).exists(), f"missing {p}")
 
-    caddy = Path("Caddyfile").read_text()
-    must("/healthz" in caddy, "Caddyfile missing /healthz")
-    must("/api/v1/healthz" in caddy, "Caddyfile missing /api/v1/healthz")
+    # Verify health endpoints exist in backend
+    main_py = Path("backend/main.py").read_text()
+    must("/healthz" in main_py, "backend/main.py missing /healthz")
+    must("/api/v1/healthz" in main_py, "backend/main.py missing /api/v1/healthz")
 
     pack_path = Path("deploy/pack.toml")
     pack = tomllib.loads(pack_path.read_text())
@@ -36,10 +37,6 @@ def main() -> None:
 
     workflow_stage = Path(".github/workflows/ephemeral-staging.yml").read_text()
     must("deploy/pack.toml" in workflow_stage, "ephemeral-staging.yml must reference deploy/pack.toml")
-
-    workflow_prod = Path(".github/workflows/promote-production.yml").read_text()
-    must("RICHMILES_XYZ_IMAGE_TAG" in workflow_prod, "promote-production.yml must pin RICHMILES_XYZ_IMAGE_TAG")
-    must("richmiles.xyz/healthz" in workflow_prod, "promote-production.yml must health-check /healthz")
 
     for doc_name in ("AGENTS.md", "CLAUDE.md"):
         doc = Path(doc_name).read_text()

@@ -1,9 +1,11 @@
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Any
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from backend.config import settings
 from backend.logging_config import configure_logging
@@ -114,3 +116,18 @@ async def get_projects():
 
     sparks = resp.json().get("sparks", [])
     return ProjectListResponse(projects=_enrich_live_projects(sparks), source="live")
+
+
+# SPA catch-all (when static dir exists from Docker build)
+STATIC_DIR = Path(__file__).parent / "static"
+if STATIC_DIR.exists():
+    app.mount("/assets", StaticFiles(directory=str(STATIC_DIR / "assets")), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        if full_path.startswith("api/"):
+            raise HTTPException(status_code=404)
+        file_path = STATIC_DIR / full_path
+        if file_path.is_file():
+            return FileResponse(file_path)
+        return FileResponse(STATIC_DIR / "index.html")

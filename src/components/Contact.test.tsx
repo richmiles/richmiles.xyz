@@ -1,34 +1,29 @@
 import { render, screen } from '@testing-library/react'
 import Contact from './Contact'
-import { mockContactLinks } from '../test/fixtures'
 
 describe('Contact', () => {
   it('renders the section heading', () => {
-    render(<Contact links={mockContactLinks} />)
+    render(<Contact />)
     expect(screen.getByText('Say hello.')).toBeInTheDocument()
   })
 
-  it('renders all contact links', () => {
-    render(<Contact links={mockContactLinks} />)
+  it('renders contact links', () => {
+    render(<Contact />)
     expect(screen.getByText(/GitHub/)).toBeInTheDocument()
-    expect(screen.getByText(/Email/)).toBeInTheDocument()
+    expect(screen.getByText(/LinkedIn/)).toBeInTheDocument()
+    expect(screen.getByText(/me@richmiles.xyz/)).toBeInTheDocument()
   })
 
-  it('sets target=_blank for http links', () => {
-    render(<Contact links={mockContactLinks} />)
+  it('sets target=_blank for external links', () => {
+    render(<Contact />)
     const githubLink = screen.getByText(/GitHub/).closest('a')
     expect(githubLink).toHaveAttribute('target', '_blank')
     expect(githubLink).toHaveAttribute('rel', 'noreferrer')
   })
 
   it('does not set target=_blank for mailto links', () => {
-    render(<Contact links={mockContactLinks} />)
-    const emailLink = screen.getByText(/Email/).closest('a')
+    render(<Contact />)
+    const emailLink = screen.getByText(/me@richmiles.xyz/).closest('a')
     expect(emailLink).not.toHaveAttribute('target')
-  })
-
-  it('shows loading state when links is empty', () => {
-    render(<Contact links={[]} />)
-    expect(screen.getByText('Loading contact links...')).toBeInTheDocument()
   })
 })
