@@ -10,9 +10,9 @@ export default function Hero({ onCta }: HeroProps) {
         <h1>Rich Miles</h1>
         <p className="hero-tagline">I build tools that stay running.</p>
         <p className="hero-description">
-          Twenty years of shipping software, from flow cytometry to fintech to AI-powered
-          account intelligence. Lead engineer at Sturdy AI by day, building a fleet of side projects
-          from Laramie, Wyoming by night.
+          Twenty years of shipping software, from flow cytometry to fintech to AI-powered account
+          intelligence. Lead engineer at Sturdy AI by day, building a fleet of side projects from
+          Laramie, Wyoming by night.
         </p>
         <button
           className="btn"

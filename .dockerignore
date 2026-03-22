@@ -1,0 +1,10 @@
+node_modules
+dist
+.git
+__pycache__
+*.pyc
+backend/__pycache__
+backend/data
+.env
+.env.*
+!.env.example
