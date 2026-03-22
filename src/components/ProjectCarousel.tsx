@@ -33,13 +33,28 @@ function formatDeploy(iso: string | null): string {
 
 export default function ProjectCarousel() {
   const [projects, setProjects] = useState<Project[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [current, setCurrent] = useState(0)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const touchStartRef = useRef<number | null>(null)
   const count = projects.length
 
   useEffect(() => {
-    fetchProjects().then(setProjects)
+    let active = true
+    fetchProjects()
+      .then((data) => {
+        if (active) setProjects(data)
+      })
+      .catch((err) => {
+        if (active) setError((err as Error).message)
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+      })
+    return () => {
+      active = false
+    }
   }, [])
 
   const goTo = useCallback(
@@ -100,7 +115,20 @@ export default function ProjectCarousel() {
     touchStartRef.current = null
   }
 
-  if (projects.length === 0) {
+  if (error) {
+    return (
+      <section className="projects" id="projects">
+        <div className="container">
+          <h2 className="section-title">Projects</h2>
+          <p style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
+            Failed to load projects: {error}
+          </p>
+        </div>
+      </section>
+    )
+  }
+
+  if (loading || projects.length === 0) {
     return (
       <section className="projects" id="projects">
         <div className="container">
